@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 .idea
+config.json
+record.json
