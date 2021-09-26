@@ -110,13 +110,15 @@ def new_member(msg: catbot.ChatMemberUpdate):
 
     problem = Challenge()
     button_list = []
+    answer_list = []
     for i in range(6):
         if problem.choices()[i] == problem.ans():
-            button_list.append([catbot.InlineKeyboardButton(text=problem.choices()[i],
-                                                            callback_data=f'{msg.new_chat_member.id}_correct')])
+            answer_list.append(catbot.InlineKeyboardButton(text=problem.choices()[i],
+                                                            callback_data=f'{msg.new_chat_member.id}_correct'))
         else:
-            button_list.append([catbot.InlineKeyboardButton(text=problem.choices()[i],
-                                                            callback_data=f'{msg.new_chat_member.id}_wrong')])
+            answer_list.append(catbot.InlineKeyboardButton(text=problem.choices()[i],
+                                                            callback_data=f'{msg.new_chat_member.id}_wrong'))
+    button_list.append(answer_list)
     button_list.append([catbot.InlineKeyboardButton(text=config['messages']['manually_approve'],
                                                     callback_data=f'{msg.new_chat_member.id}_approve'),
                         catbot.InlineKeyboardButton(text=config['messages']['manually_reject'],
