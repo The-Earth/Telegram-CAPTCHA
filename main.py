@@ -39,6 +39,18 @@ def secure_record_fetch(key: str, data_type):
     return record_list, rec
 
 
+def read_record_and_lift(chat_id: int, user_id: int):
+    with t_lock:
+        restrict_record, rec = secure_record_fetch('restrict_record', dict)
+        if str(chat_id) in restrict_record \
+                and str(user_id) in restrict_record[str(chat_id)]:
+            record = restrict_record[str(chat_id)][str(user_id)]
+            restricted_until = record['until'] if record['restricted_by'] != bot.id else time.time()
+            lift_restriction(chat_id, user_id, int(restricted_until))
+        else:
+            lift_restriction(chat_id, user_id, int(time.time()))
+
+
 def lift_restriction(chat_id: int, user_id: int, restricted_until: int):
     member = bot.get_chat_member(chat_id, user_id)
     if member.status == 'kicked':
@@ -162,14 +174,7 @@ def challenge_button(query: catbot.CallbackQuery):
                          text=config['messages']['challenge_passed'].format(user_id=challenged_user_id,
                                                                             name=challenged_user.name),
                          parse_mode='HTML')
-        with t_lock:
-            restrict_record, rec = secure_record_fetch('restrict_record', dict)
-            if str(challenged_user_id) in restrict_record:
-                record = restrict_record[str(challenged_user_id)]
-                restricted_until = record['until'] if record['restricted_by_id'] != bot.id else time.time()
-                lift_restriction(query.msg.chat.id, challenged_user_id, int(restricted_until))
-            else:
-                lift_restriction(query.msg.chat.id, challenged_user_id, int(time.time()))
+        read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['challenge_failed'].format(user_id=challenged_user_id,
@@ -212,14 +217,7 @@ def manual_operations(query: catbot.CallbackQuery):
                                                                              name=challenged_user.name,
                                                                              admin_name=operator.name),
                          parse_mode='HTML')
-        with t_lock:
-            restrict_record, rec = secure_record_fetch('restrict_record', dict)
-            if str(challenged_user_id) in restrict_record:
-                record = restrict_record[str(challenged_user_id)]
-                restricted_until = record['until'] if record['restricted_by_id'] != bot.id else time.time()
-                lift_restriction(query.msg.chat.id, challenged_user_id, int(restricted_until))
-            else:
-                lift_restriction(query.msg.chat.id, challenged_user_id, int(time.time()))
+        read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['manually_rejected'].format(user_id=challenged_user_id,
@@ -233,8 +231,6 @@ def manual_operations(query: catbot.CallbackQuery):
 
 
 def update_restriction_cri(msg: catbot.ChatMemberUpdate):
-    if msg.new_chat_member.is_bot:
-        return False
     if msg.from_.id != bot.id and msg.from_.id != msg.new_chat_member.id:
         return True
     else:
@@ -249,11 +245,10 @@ def update_restriction(msg: catbot.ChatMemberUpdate):
 
     with t_lock:
         restrict_record, rec = secure_record_fetch('restrict_record', dict)
-        if msg.new_chat_member.id in restrict_record:
-            restrict_record[str(msg.new_chat_member.id)]['restricted_by_id'] = msg.from_.id
-        else:
-            restrict_record[str(msg.new_chat_member.id)] = {'restricted_by_id': msg.from_.id}
-        restrict_record[str(msg.new_chat_member.id)]['until'] = until
+        if str(msg.chat.id) not in restrict_record:
+            restrict_record[str(msg.chat.id)] = {}
+        restrict_record[str(msg.chat.id)][str(msg.new_chat_member.id)] = {'restricted_by': msg.from_.id,
+                                                                          'until': until}
 
         rec['restrict_record'] = restrict_record
         json.dump(rec, open(config['record'], 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
