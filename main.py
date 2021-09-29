@@ -177,7 +177,7 @@ def challenge_button(query: catbot.CallbackQuery):
                                                                             name=challenged_user.name),
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
-        time.sleep(60)
+        time.sleep(config['shorten_after_pass_delay'])
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['challenge_passed_short'].format(user_id=challenged_user_id,
                                                                                   name=challenged_user.name),
