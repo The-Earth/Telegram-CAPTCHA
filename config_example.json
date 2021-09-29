@@ -11,6 +11,7 @@
     "button_not_for_you": "这次验证并不针对您",
     "new_member": "<a href=\"tg://user?id={user_id}\">{name}</a> 您好，本群开启了验证功能，请在 {timeout} 秒内点击下面的按钮回答这个问题：\n{challenge}\n\nHi! The group has enabled CAPTCHA, please click one of the buttons to answer the following question:\n{challenge}",
     "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> 已通过验证，欢迎加入本群！\n如果仍然无法发言，请重启 Telegram 客户端。\n\nWelcome to this group! You have passed the CAPTCHA. If you cannot send messages, please restart the Telegram client.",
+    "challenge_passed_short": "<a href=\"tg://user?id={user_id}\">{name}</a> 已加入本群",
     "challenge_failed": "<a href=\"tg://user?id={user_id}\">{name}</a> 没有通过验证，如需解封请私聊本群群管。\n\nSorry but you failed the CAPTCHA. Please contact group admins for help.",
     "manually_approve": "人工通过",
     "manually_reject": "人工拒绝",
