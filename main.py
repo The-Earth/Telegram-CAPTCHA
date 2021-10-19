@@ -82,6 +82,8 @@ def greeting(msg: catbot.ChatMemberUpdate):
 
 
 def new_member_cri(msg: catbot.ChatMemberUpdate) -> bool:
+    if time.time() - msg.date > 180:
+        return False
     if msg.new_chat_member.is_bot:
         return False
     elif msg.new_chat_member.status == 'member':
