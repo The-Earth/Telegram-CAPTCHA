@@ -42,13 +42,13 @@ def secure_record_fetch(key: str, data_type):
 def read_record_and_lift(chat_id: int, user_id: int):
     with t_lock:
         restrict_record, rec = secure_record_fetch('restrict_record', dict)
-        if str(chat_id) in restrict_record \
-                and str(user_id) in restrict_record[str(chat_id)]:
-            record = restrict_record[str(chat_id)][str(user_id)]
-            restricted_until = record['until'] if record['restricted_by'] != bot.id else time.time()
-            lift_restriction(chat_id, user_id, int(restricted_until))
-        else:
-            lift_restriction(chat_id, user_id, int(time.time()))
+    if str(chat_id) in restrict_record \
+            and str(user_id) in restrict_record[str(chat_id)]:
+        record = restrict_record[str(chat_id)][str(user_id)]
+        restricted_until = record['until'] if record['restricted_by'] != bot.id else time.time()
+        lift_restriction(chat_id, user_id, int(restricted_until))
+    else:
+        lift_restriction(chat_id, user_id, int(time.time()))
 
 
 def lift_restriction(chat_id: int, user_id: int, restricted_until: int):
@@ -247,17 +247,18 @@ def update_restriction_cri(msg: catbot.ChatMemberUpdate):
 
 
 def update_restriction(msg: catbot.ChatMemberUpdate):
-    if msg.new_chat_member.status == 'restricted' or msg.new_chat_member.status == 'kicked':
-        until = msg.new_chat_member.until_date
-    else:
-        until = time.time()
-
     with t_lock:
         restrict_record, rec = secure_record_fetch('restrict_record', dict)
-        if str(msg.chat.id) not in restrict_record:
-            restrict_record[str(msg.chat.id)] = {}
-        restrict_record[str(msg.chat.id)][str(msg.new_chat_member.id)] = {'restricted_by': msg.from_.id,
-                                                                          'until': until}
+
+        if msg.new_chat_member.status == 'restricted':
+            until = msg.new_chat_member.until_date
+            if str(msg.chat.id) not in restrict_record:
+                restrict_record[str(msg.chat.id)] = {}
+            restrict_record[str(msg.chat.id)][str(msg.new_chat_member.id)] = {'restricted_by': msg.from_.id,
+                                                                              'until': until}
+        else:  # The member is no longer restricted
+            if str(msg.chat.id) in restrict_record:
+                restrict_record[str(msg.chat.id)].pop(str(msg.new_chat_member.id), None)
 
         rec['restrict_record'] = restrict_record
         json.dump(rec, open(config['record'], 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
