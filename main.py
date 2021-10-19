@@ -70,8 +70,8 @@ def lift_restriction(chat_id: int, user_id: int, restricted_until: int):
 
 def greeting_cri(msg: catbot.ChatMemberUpdate) -> bool:
     if msg.new_chat_member.id == bot.id \
-           and msg.new_chat_member.status == 'member' \
-           and msg.old_chat_member.status == 'left':
+            and msg.new_chat_member.status == 'member' \
+            and msg.old_chat_member.status == 'left':
         return True
     else:
         return False
@@ -116,10 +116,10 @@ def new_member(msg: catbot.ChatMemberUpdate):
     for i in range(6):
         if problem.choices()[i] == problem.ans():
             answer_list.append(catbot.InlineKeyboardButton(text=problem.choices()[i],
-                                                            callback_data=f'{msg.new_chat_member.id}_correct'))
+                                                           callback_data=f'{msg.new_chat_member.id}_correct'))
         else:
             answer_list.append(catbot.InlineKeyboardButton(text=problem.choices()[i],
-                                                            callback_data=f'{msg.new_chat_member.id}_wrong'))
+                                                           callback_data=f'{msg.new_chat_member.id}_wrong'))
     button_list.append(answer_list)
     button_list.append([catbot.InlineKeyboardButton(text=config['messages']['manually_approve'],
                                                     callback_data=f'{msg.new_chat_member.id}_approve'),
