@@ -295,7 +295,7 @@ if __name__ == '__main__':
     bot.add_member_status_task(new_member_cri, new_member)
     bot.add_query_task(challenge_button_cri, challenge_button)
     bot.add_query_task(manual_operations_cri, manual_operations)
-    bot.add_member_status_task(kicked_before_captcha_cri, kicked_before_pass)
+    bot.add_member_status_task(kicked_before_captcha_cri, kicked_before_captcha)
     bot.add_member_status_task(update_restriction_cri, update_restriction)
 
     bot.start()
