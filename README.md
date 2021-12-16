@@ -1,16 +1,16 @@
 # Telegram-CAPTCHA
 
-一个 Telegram 入群验证机器人。机器人运作方式复刻自 [Iziad 开发的入群验证机器人](https://github.com/lziad/Telegram-CAPTCHA-bot) 。在其基础上，改用 [catbot 框架](https://github.com/The-Earth/catbot) ，并根据 Telegram bot API 最近的更新，规避了大型群组中无法正常运作的问题。本机器人配置文件示例中的文本也来自 Iziad 的设计。
+一个 Telegram 入群验证机器人。机器人的设计来自 [fossifer 的入群验证机器人](https://github.com/fossifer/Telegram-CAPTCHA-bot) 。在其基础上，改用 [catbot 框架](https://github.com/The-Earth/catbot) ，并避免 Telegram 大型群组中没有入群消息带来的问题。本机器人配置文件示例中的文本也来自 Iziad 的设计。除 fossifer 的原设计之外，这个机器人还可设置用户名黑名单，当用户名匹配规则时不进行验证而直接踢出，可用于处理明显的广告机器人。另外，针对有些群管会直接将用户踢出的操作，为了避免冲突，机器人检测到群管的操作之后会自行删除验证。
 
 ## 自行运行机器人
 
-复制源代码到本地，安装 catbot：
+确保 Python 版本为 3.7 以上。复制源代码到本地，安装 catbot：
 
 ```
 pip install -r requirements.txt
 ```
 
-将 `config_example.json` 复制到 `config.json`，打开并填入您的 Bot Token。按需要修改 `proxy` 参数及提示文本。运行：`main.py`。
+将 `config_example.json` 复制到 `config.json`，打开并填入您的 Bot Token。按需要修改 `proxy` 参数及提示文本，以及用户名黑名单。然后运行：`main.py`。
 
 机器人开始运行后，将机器人加入您的群组，并授予 ban user 权限。
 

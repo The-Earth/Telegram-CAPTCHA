@@ -7,6 +7,9 @@
   "timeout": 180,
   "shorten_after_pass_delay": 15,
   "record": "record.json",
+  "blacklist": [
+
+  ],
   "messages": {
     "self_intro": "大家好，感谢使用本机器人。\n\n我负责排除掉讨厌的广告机器人，赋予我群管中的 Ban users 权限即可开始使用，移除权限即可停用。新用户加群时我会暂时将其禁言，并出一道小学二年级水平的口算题，列出几个选项让用户选择。因为我比较仁慈，所以用户只要点击按钮即可获得解封，甚至不需要答对。\n\n我不会收集群里的消息，源代码是公开的，如果您对我的功能不满意，可以点击我的头像查看 bio 中的源代码链接，修改并运行您自己的机器人。",
     "button_not_for_you": "这次验证并不针对您",
@@ -18,6 +21,6 @@
     "manually_reject": "人工拒绝",
     "manual_denied": "您的权限不足",
     "manually_approved": "<a href=\"tg://user?id={user_id}\">{name}</a> 已被管理员 {admin_name} 人工通过，欢迎加入本群！\n\nWelcome to this group! You were approved by {admin_name} manually.",
-    "manually_rejected": "<a href=\"tg://user?id={user_id}\">{name}</a> 已被管理员 {admin_name} 移除出群。\n\nThe user has been removed from group by {admin_name}."
+    "manually_rejected": "用户已被管理员 {admin_name} 移除出群。\n\nThe user has been removed from group by {admin_name}."
   }
 }

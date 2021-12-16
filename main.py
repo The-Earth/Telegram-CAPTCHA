@@ -1,4 +1,5 @@
 import json
+import re
 import threading
 import time
 
@@ -68,6 +69,14 @@ def lift_restriction(chat_id: int, user_id: int, restricted_until: int):
         pass
 
 
+def match_blacklist(token: str) -> bool:
+    for reg in config['blacklist']:
+        if re.search(reg, token):
+            return True
+
+    return False
+
+
 def greeting_cri(msg: catbot.ChatMemberUpdate) -> bool:
     if msg.new_chat_member.id == bot.id \
             and msg.new_chat_member.status == 'member' \
@@ -107,6 +116,9 @@ def new_member_cri(msg: catbot.ChatMemberUpdate) -> bool:
 def new_member(msg: catbot.ChatMemberUpdate):
     try:
         bot.silence_chat_member(msg.chat.id, msg.new_chat_member.id)
+        if match_blacklist(msg.new_chat_member.name):
+            bot.kick_chat_member(msg.chat.id, msg.new_chat_member.id)
+            return
     except catbot.InsufficientRightError:
         return
 
@@ -191,6 +203,20 @@ def challenge_button(query: catbot.CallbackQuery):
                          parse_mode='HTML')
 
 
+def kicked_before_captcha_cri(msg: catbot.ChatMemberUpdate):
+    return msg.new_chat_member.id != msg.from_.id and msg.new_chat_member.status == 'kicked' and msg.from_.id != bot.id
+
+
+def kicked_before_captcha(msg: catbot.ChatMemberUpdate):
+    for timeout in Timeout.list_all():
+        if timeout.chat_id == msg.chat.id and timeout.user_id == msg.new_chat_member.id:
+            timeout.stop()
+            try:
+                bot.delete_message(timeout.chat_id, timeout.msg_id)
+            except catbot.DeleteMessageError:
+                pass
+
+
 def manual_operations_cri(query: catbot.CallbackQuery):
     return query.data.endswith('approve') or query.data.endswith('reject')
 
@@ -269,6 +295,7 @@ if __name__ == '__main__':
     bot.add_member_status_task(new_member_cri, new_member)
     bot.add_query_task(challenge_button_cri, challenge_button)
     bot.add_query_task(manual_operations_cri, manual_operations)
+    bot.add_member_status_task(kicked_before_captcha_cri, kicked_before_pass)
     bot.add_member_status_task(update_restriction_cri, update_restriction)
 
     bot.start()
