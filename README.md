@@ -1,6 +1,6 @@
 # Telegram-CAPTCHA
 
-一个 Telegram 入群验证机器人。机器人的设计来自 [fossifer 的入群验证机器人](https://github.com/fossifer/Telegram-CAPTCHA-bot) 。在其基础上，改用 [catbot 框架](https://github.com/The-Earth/catbot) ，并避免 Telegram 大型群组中没有入群消息带来的问题。本机器人配置文件示例中的文本也来自 Iziad 的设计。除 fossifer 的原设计之外，这个机器人还可设置用户名黑名单，当用户名匹配规则时不进行验证而直接踢出，可用于处理明显的广告机器人。另外，针对有些群管会直接将用户踢出的操作，为了避免冲突，机器人检测到群管的操作之后会自行删除验证。
+一个 Telegram 入群验证机器人。机器人的设计来自 [fossifer 的入群验证机器人](https://github.com/fossifer/Telegram-CAPTCHA-bot) 。在其基础上，改用 [catbot 框架](https://github.com/The-Earth/catbot) ，并避免 Telegram 大型群组中没有入群消息带来的问题。本机器人配置文件示例中的文本也来自 fossifer 的设计。除 fossifer 的原设计之外，这个机器人还可设置用户名黑名单，当用户名匹配规则时不进行验证而直接踢出，可用于处理明显的广告机器人。另外，针对有些群管会直接将用户踢出的操作，为了避免冲突，机器人检测到群管的操作之后会自行删除验证。
 
 ## 自行运行机器人
 
