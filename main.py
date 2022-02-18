@@ -77,6 +77,17 @@ def match_blacklist(token: str) -> bool:
     return False
 
 
+def html_refer(ori: str) -> str:
+    refer = {
+        '<': '&lt;',
+        '>': '&gt;',
+    }
+    for k in refer:
+        ori = ori.replace(k, refer[k])
+
+    return ori
+
+
 def greeting_cri(msg: catbot.ChatMemberUpdate) -> bool:
     if msg.new_chat_member.id == bot.id \
             and msg.new_chat_member.status == 'member' \
@@ -142,7 +153,7 @@ def new_member(msg: catbot.ChatMemberUpdate):
 
     sent = bot.send_message(msg.chat.id, text=config['messages']['new_member'].format(
         user_id=msg.new_chat_member.id,
-        name=msg.new_chat_member.name,
+        name=html_refer(msg.new_chat_member.name),
         timeout=config['timeout'],
         challenge=problem.qus()
     ), parse_mode='HTML', reply_markup=buttons)
@@ -188,18 +199,18 @@ def challenge_button(query: catbot.CallbackQuery):
     if query_token[1] == 'correct':
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['challenge_passed'].format(user_id=challenged_user_id,
-                                                                            name=challenged_user.name),
+                                                                            name=html_refer(challenged_user.name)),
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
         time.sleep(config['shorten_after_pass_delay'])
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['challenge_passed_short'].format(user_id=challenged_user_id,
-                                                                                  name=challenged_user.name),
+                                                                                  name=html_refer(challenged_user.name)),
                          parse_mode='HTML')
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['challenge_failed'].format(user_id=challenged_user_id,
-                                                                            name=challenged_user.name),
+                                                                            name=html_refer(challenged_user.name)),
                          parse_mode='HTML')
 
 
@@ -249,15 +260,15 @@ def manual_operations(query: catbot.CallbackQuery):
     if query_token[1] == 'approve':
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['manually_approved'].format(user_id=challenged_user_id,
-                                                                             name=challenged_user.name,
-                                                                             admin_name=operator.name),
+                                                                             name=html_refer(challenged_user.name),
+                                                                             admin_name=html_refer(operator.name)),
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['manually_rejected'].format(user_id=challenged_user_id,
-                                                                             name=challenged_user.name,
-                                                                             admin_name=operator.name),
+                                                                             name=html_refer(challenged_user.name),
+                                                                             admin_name=html_refer(operator.name)),
                          parse_mode='HTML')
         try:
             bot.kick_chat_member(query.msg.chat.id, challenged_user_id)
