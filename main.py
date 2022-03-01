@@ -4,6 +4,7 @@ import threading
 import time
 
 import catbot
+from catbot.util import html_refer
 
 from challenge import Challenge
 from timeout import Timeout
@@ -20,53 +21,16 @@ def timeout_callback(chat_id: int, msg_id: int, user_id: int):
                      parse_mode='HTML')
 
 
-def secure_record_fetch(key: str, data_type):
-    """
-    :param key: Name of the data you want in record file
-    :param data_type: Type of the data. For example, if it is trusted user list, data_type will be list.
-    :return: Returns a tuple. The first element is the data you asked for. The second is the deserialized record file.
-    """
-    try:
-        rec = json.load(open(config['record'], 'r', encoding='utf-8'))
-    except FileNotFoundError:
-        record_list, rec = data_type(), {}
-        json.dump({key: record_list}, open(config['record'], 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
-    else:
-        if key in rec.keys():
-            record_list = rec[key]
-        else:
-            record_list = data_type()
-
-    return record_list, rec
-
-
 def read_record_and_lift(chat_id: int, user_id: int):
     with t_lock:
-        restrict_record, rec = secure_record_fetch('restrict_record', dict)
+        restrict_record, rec = bot.secure_record_fetch('restrict_record', dict)
     if str(chat_id) in restrict_record \
             and str(user_id) in restrict_record[str(chat_id)]:
         record = restrict_record[str(chat_id)][str(user_id)]
         restricted_until = record['until'] if record['restricted_by'] != bot.id else time.time()
-        lift_restriction(chat_id, user_id, int(restricted_until))
+        bot.lift_and_preserve_restriction(chat_id, user_id, int(restricted_until))
     else:
-        lift_restriction(chat_id, user_id, int(time.time()))
-
-
-def lift_restriction(chat_id: int, user_id: int, restricted_until: int):
-    member = bot.get_chat_member(chat_id, user_id)
-    if member.status == 'kicked':
-        return
-    try:
-        if restricted_until <= time.time() + 35 and restricted_until != 0:
-            bot.lift_restrictions(chat_id, user_id)
-        else:
-            bot.silence_chat_member(chat_id, user_id, until=restricted_until)
-    except catbot.RestrictAdminError:
-        pass
-    except catbot.InsufficientRightError:
-        pass
-    except catbot.UserNotFoundError:
-        pass
+        bot.lift_and_preserve_restriction(chat_id, user_id, int(time.time()))
 
 
 def match_blacklist(token: str) -> bool:
@@ -75,17 +39,6 @@ def match_blacklist(token: str) -> bool:
             return True
 
     return False
-
-
-def html_refer(ori: str) -> str:
-    refer = {
-        '<': '&lt;',
-        '>': '&gt;',
-    }
-    for k in refer:
-        ori = ori.replace(k, refer[k])
-
-    return ori
 
 
 def greeting_cri(msg: catbot.ChatMemberUpdate) -> bool:
@@ -205,7 +158,8 @@ def challenge_button(query: catbot.CallbackQuery):
         time.sleep(config['shorten_after_pass_delay'])
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages']['challenge_passed_short'].format(user_id=challenged_user_id,
-                                                                                  name=html_refer(challenged_user.name)),
+                                                                                  name=html_refer(
+                                                                                      challenged_user.name)),
                          parse_mode='HTML')
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
@@ -285,7 +239,7 @@ def update_restriction_cri(msg: catbot.ChatMemberUpdate):
 
 def update_restriction(msg: catbot.ChatMemberUpdate):
     with t_lock:
-        restrict_record, rec = secure_record_fetch('restrict_record', dict)
+        restrict_record, rec = bot.secure_record_fetch('restrict_record', dict)
 
         if msg.new_chat_member.status == 'restricted':
             until = msg.new_chat_member.until_date
