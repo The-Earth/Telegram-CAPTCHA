@@ -33,6 +33,20 @@ def read_record_and_lift(chat_id: int, user_id: int):
         bot.lift_and_preserve_restriction(chat_id, user_id, int(time.time()))
 
 
+def get_chat_language(chat_id: int) -> str:
+    """
+    Return language setting of a chat. If the chat has no language setting then return the default 'en'.
+    :param chat_id:
+    :return:
+    """
+    with t_lock:
+        chat_languages, rec = bot.secure_record_fetch('language', dict)
+    if str(chat_id) in chat_languages:
+        return chat_languages[str(chat_id)]
+    else:
+        return 'en'
+
+
 def match_blacklist(token: str) -> bool:
     for reg in config['blacklist']:
         if re.search(reg, token):
@@ -51,7 +65,8 @@ def greeting_cri(msg: catbot.ChatMemberUpdate) -> bool:
 
 
 def greeting(msg: catbot.ChatMemberUpdate):
-    bot.send_message(msg.chat.id, text=config['messages']['self_intro'])
+    language = get_chat_language(msg.chat.id)
+    bot.send_message(msg.chat.id, text=config['messages'][language]['self_intro'])
 
 
 def new_member_cri(msg: catbot.ChatMemberUpdate) -> bool:
@@ -86,6 +101,7 @@ def new_member(msg: catbot.ChatMemberUpdate):
     except catbot.InsufficientRightError:
         return
 
+    language = get_chat_language(msg.chat.id)
     problem = Challenge()
     button_list = []
     answer_list = []
@@ -97,14 +113,14 @@ def new_member(msg: catbot.ChatMemberUpdate):
             answer_list.append(catbot.InlineKeyboardButton(text=problem.choices()[i],
                                                            callback_data=f'{msg.new_chat_member.id}_wrong'))
     button_list.append(answer_list)
-    button_list.append([catbot.InlineKeyboardButton(text=config['messages']['manually_approve'],
+    button_list.append([catbot.InlineKeyboardButton(text=config['messages'][language]['manually_approve'],
                                                     callback_data=f'{msg.new_chat_member.id}_approve'),
-                        catbot.InlineKeyboardButton(text=config['messages']['manually_reject'],
+                        catbot.InlineKeyboardButton(text=config['messages'][language]['manually_reject'],
                                                     callback_data=f'{msg.new_chat_member.id}_reject')
                         ])
     buttons = catbot.InlineKeyboard(button_list)
 
-    sent = bot.send_message(msg.chat.id, text=config['messages']['new_member'].format(
+    sent = bot.send_message(msg.chat.id, text=config['messages'][language]['new_member'].format(
         user_id=msg.new_chat_member.id,
         name=html_refer(msg.new_chat_member.name),
         timeout=config['timeout'],
@@ -125,6 +141,7 @@ def challenge_button_cri(query: catbot.CallbackQuery):
 
 
 def challenge_button(query: catbot.CallbackQuery):
+    language = get_chat_language(query.msg.chat.id)
     query_token = query.data.split('_')
     if len(query_token) != 2:
         bot.answer_callback_query(query.id)
@@ -136,7 +153,7 @@ def challenge_button(query: catbot.CallbackQuery):
         return
     else:
         if query.from_.id != challenged_user_id:
-            bot.answer_callback_query(query.id, text=config['messages']['button_not_for_you'],
+            bot.answer_callback_query(query.id, text=config['messages'][language]['button_not_for_you'],
                                       show_alert=True, cache_time=config['timeout'])
             return
 
@@ -151,20 +168,22 @@ def challenge_button(query: catbot.CallbackQuery):
     challenged_user = bot.get_chat_member(query.msg.chat.id, challenged_user_id)
     if query_token[1] == 'correct':
         bot.edit_message(query.msg.chat.id, query.msg.id,
-                         text=config['messages']['challenge_passed'].format(user_id=challenged_user_id,
-                                                                            name=html_refer(challenged_user.name)),
+                         text=config['messages'][language]['challenge_passed'].format(
+                             user_id=challenged_user_id,
+                             name=html_refer(challenged_user.name)),
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
         time.sleep(config['shorten_after_pass_delay'])
         bot.edit_message(query.msg.chat.id, query.msg.id,
-                         text=config['messages']['challenge_passed_short'].format(user_id=challenged_user_id,
-                                                                                  name=html_refer(
-                                                                                      challenged_user.name)),
+                         text=config['messages'][language]['challenge_passed_short'].format(
+                             user_id=challenged_user_id,
+                             name=html_refer(challenged_user.name)),
                          parse_mode='HTML')
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
-                         text=config['messages']['challenge_failed'].format(user_id=challenged_user_id,
-                                                                            name=html_refer(challenged_user.name)),
+                         text=config['messages'][language]['challenge_failed'].format(
+                             user_id=challenged_user_id,
+                             name=html_refer(challenged_user.name)),
                          parse_mode='HTML')
 
 
@@ -187,9 +206,10 @@ def manual_operations_cri(query: catbot.CallbackQuery):
 
 
 def manual_operations(query: catbot.CallbackQuery):
+    language = get_chat_language(query.msg.chat.id)
     operator = bot.get_chat_member(query.msg.chat.id, query.from_.id)
     if operator.status != 'administrator' and operator.status != 'creator':
-        bot.answer_callback_query(query.id, text=config['messages']['manual_denied'],
+        bot.answer_callback_query(query.id, text=config['messages'][language]['permission_denied'],
                                   show_alert=True,
                                   cache_time=config['timeout'])
         return
@@ -213,14 +233,14 @@ def manual_operations(query: catbot.CallbackQuery):
     challenged_user = bot.get_chat_member(query.msg.chat.id, challenged_user_id)
     if query_token[1] == 'approve':
         bot.edit_message(query.msg.chat.id, query.msg.id,
-                         text=config['messages']['manually_approved'].format(user_id=challenged_user_id,
+                         text=config['messages'][language]['manually_approved'].format(user_id=challenged_user_id,
                                                                              name=html_refer(challenged_user.name),
                                                                              admin_name=html_refer(operator.name)),
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
-                         text=config['messages']['manually_rejected'].format(user_id=challenged_user_id,
+                         text=config['messages'][language]['manually_rejected'].format(user_id=challenged_user_id,
                                                                              name=html_refer(challenged_user.name),
                                                                              admin_name=html_refer(operator.name)),
                          parse_mode='HTML')
@@ -255,6 +275,50 @@ def update_restriction(msg: catbot.ChatMemberUpdate):
         json.dump(rec, open(config['record'], 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
 
 
+def set_language_cri(msg: catbot.Message) -> bool:
+    return bot.detect_command('/set_language', msg, require_username=True)
+
+
+def set_language(msg: catbot.Message):
+    language = get_chat_language(msg.chat.id)
+    operator = bot.get_chat_member(msg.chat.id, msg.from_.id)
+    if operator.status != 'administrator' and operator.status != 'creator':
+        bot.send_message(msg.chat.id, text=config['messages'][language]['permission_denied'])
+        return
+    button_list = []
+    for item in config['languages']:
+        button_list.append([catbot.InlineKeyboardButton(item, callback_data=f'language_{item}')])
+    buttons = catbot.InlineKeyboard(button_list)
+    bot.send_message(msg.chat.id, text=config['messages'][language]['set_language_prompt'], reply_markup=buttons)
+
+
+def set_language_button_cri(query: catbot.CallbackQuery) -> bool:
+    return query.data.startswith('language')
+
+
+def set_language_button(query: catbot.CallbackQuery):
+    chat_id = query.msg.chat.id
+    language = get_chat_language(chat_id)
+    operator = bot.get_chat_member(chat_id, query.from_.id)
+    if operator.status != 'administrator' and operator.status != 'creator':
+        bot.answer_callback_query(query.id, text=config['messages'][language]['permission_denied'],
+                                  show_alert=True,
+                                  cache_time=config['timeout'])
+        return
+
+    target_language = query.data.split('_')[1]
+    language = target_language
+    with t_lock:
+        chat_languages, rec = bot.secure_record_fetch('language', dict)
+        chat_languages[str(chat_id)] = target_language
+        rec['language'] = chat_languages
+        json.dump(rec, open(config['record'], 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+
+    bot.edit_message(query.msg.chat.id, query.msg.id, text=config['messages'][language]['set_language_done'].format(
+        language=target_language
+    ))
+
+
 if __name__ == '__main__':
     bot.add_member_status_task(greeting_cri, greeting)
     bot.add_member_status_task(new_member_cri, new_member)
@@ -262,5 +326,7 @@ if __name__ == '__main__':
     bot.add_query_task(manual_operations_cri, manual_operations)
     bot.add_member_status_task(kicked_before_captcha_cri, kicked_before_captcha)
     bot.add_member_status_task(update_restriction_cri, update_restriction)
+    bot.add_msg_task(set_language_cri, set_language)
+    bot.add_query_task(set_language_button_cri, set_language_button)
 
     bot.start()

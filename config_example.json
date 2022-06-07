@@ -10,17 +10,40 @@
   "blacklist": [
 
   ],
+  "languages": [
+    "en",
+    "zh-cn"
+  ],
   "messages": {
-    "self_intro": "大家好，感谢使用本机器人。\n\n我负责排除掉讨厌的广告机器人，赋予我群管中的 Ban users 权限即可开始使用，移除权限即可停用。新用户加群时我会暂时将其禁言，并出一道小学二年级水平的口算题，列出几个选项让用户选择。因为我比较仁慈，所以用户只要点击按钮即可获得解封，甚至不需要答对。\n\n我不会收集群里的消息，源代码是公开的，如果您对我的功能不满意，可以点击我的头像查看 bio 中的源代码链接，修改并运行您自己的机器人。",
-    "button_not_for_you": "这次验证并不针对您",
-    "new_member": "<a href=\"tg://user?id={user_id}\">{name}</a> 您好，本群开启了验证功能，请在 {timeout} 秒内点击下面的按钮回答这个问题：\n{challenge}\n\nHi! The group has enabled CAPTCHA, please click one of the buttons to answer the following question:\n{challenge}",
-    "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> 已通过验证，欢迎加入本群！\n如果仍然无法发言，请重启 Telegram 客户端。\n\nWelcome to this group! You have passed the CAPTCHA. If you cannot send messages, please restart the Telegram client.",
-    "challenge_passed_short": "<a href=\"tg://user?id={user_id}\">{name}</a> 已加入本群",
-    "challenge_failed": "<a href=\"tg://user?id={user_id}\">{name}</a> 没有通过验证，如需解封请私聊本群群管。\n\nSorry but you failed the CAPTCHA. Please contact group admins for help.",
-    "manually_approve": "人工通过",
-    "manually_reject": "人工拒绝",
-    "manual_denied": "您的权限不足",
-    "manually_approved": "<a href=\"tg://user?id={user_id}\">{name}</a> 已被管理员 {admin_name} 人工通过，欢迎加入本群！\n\nWelcome to this group! You were approved by {admin_name} manually.",
-    "manually_rejected": "用户已被管理员 {admin_name} 移除出群。\n\nThe user has been removed from group by {admin_name}."
+    "zh-cn": {
+      "self_intro": "大家好，感谢使用本机器人。\n\n我负责排除掉讨厌的广告机器人，赋予我群管中的 Ban users 权限即可开始使用，移除权限即可停用。新用户加群时我会暂时将其禁言，并出一道小学二年级水平的口算题，列出几个选项让用户选择。\n\n我会收集其他管理员实施的禁言信息，以防通过退群重进绕开禁言。源代码是公开的，如果您对我的功能不满意，可以点击我的头像查看 bio 中的源代码链接，修改并运行您自己的机器人。\n\n您可以使用 /set_language 来设置语言。",
+      "button_not_for_you": "这次验证并不针对您",
+      "new_member": "<a href=\"tg://user?id={user_id}\">{name}</a> 您好，本群开启了验证功能，请在 {timeout} 秒内点击下面的按钮回答这个问题：\n{challenge}\n\nHi! The group has enabled CAPTCHA, please click one of the buttons to answer the following question:\n{challenge}",
+      "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> 已通过验证，欢迎加入本群！\n如果仍然无法发言，请重启 Telegram 客户端。\n\nWelcome to this group! You have passed the CAPTCHA. If you cannot send messages, please restart the Telegram client.",
+      "challenge_passed_short": "<a href=\"tg://user?id={user_id}\">{name}</a> 已加入本群",
+      "challenge_failed": "<a href=\"tg://user?id={user_id}\">{name}</a> 没有通过验证，如需解封请私聊本群群管。\n\nSorry but you failed the CAPTCHA. Please contact group admins for help.",
+      "manually_approve": "人工通过",
+      "manually_reject": "人工拒绝",
+      "permission_denied": "您的权限不足",
+      "manually_approved": "<a href=\"tg://user?id={user_id}\">{name}</a> 已被管理员 {admin_name} 人工通过，欢迎加入本群！\n\nWelcome to this group! You were approved by {admin_name} manually.",
+      "manually_rejected": "用户已被管理员 {admin_name} 移除出群。\n\nThe user has been removed from group by {admin_name}.",
+      "set_language_prompt": "请从下方列表中选择语言：",
+      "set_language_done": "当前语言：{language}。"
+    },
+    "en": {
+      "self_intro": "Hi, thank you for choosing me. \n\nMy ability is telling spam bots from human users. I will start working after being granted the \"Ban users\" permission and stop when the permission is removed. When a new member joins, I will temporarily restrict their ability to send messages and challenge them with a simple math problem. I keep a record of users being restricted to prevent the user from bypassing the restriction by rejoining. I'm open sourced. Code could be found in my bio.\n\nSet my language with /set_language .",
+      "button_not_for_you": "This challenge is not for you.",
+      "new_member": "Hi <a href=\"tg://user?id={user_id}\">{name}</a>, The group has enabled CAPTCHA, please click one of the buttons to answer the following question within {timeout} seconds: {challenge}",
+      "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> has passed the CAPTCHA. Welcome to this group! If you cannot send messages, please restart the Telegram client.",
+      "challenge_passed_short": "<a href=\"tg://user?id={user_id}\">{name}</a> joined the group",
+      "challenge_failed": "<a href=\"tg://user?id={user_id}\">{name}</a> failed the CAPTCHA. Please contact group admins for help.",
+      "manually_approve": "Approve",
+      "manually_reject": "Kick out",
+      "permission_denied": "Permission denied.",
+      "manually_approved": "<a href=\"tg://user?id={user_id}\">{name}</a> was approved by {admin_name} manually. Welcome to this group!",
+      "manually_rejected": "The user has been removed from group by {admin_name}.",
+      "set_language_prompt": "Pick a language from the list below: ",
+      "set_language_done": "Current language: {language}."
+    }
   }
 }
