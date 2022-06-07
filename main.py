@@ -15,8 +15,9 @@ t_lock = threading.Lock()
 
 
 def timeout_callback(chat_id: int, msg_id: int, user_id: int):
+    language = get_chat_language(chat_id)
     member = bot.get_chat_member(chat_id, user_id)
-    bot.edit_message(chat_id, msg_id, text=config['messages']['challenge_failed'].format(user_id=user_id,
+    bot.edit_message(chat_id, msg_id, text=config['messages'][language]['challenge_failed'].format(user_id=user_id,
                                                                                          name=member.name),
                      parse_mode='HTML')
 
