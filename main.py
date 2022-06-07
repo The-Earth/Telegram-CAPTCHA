@@ -320,7 +320,7 @@ def set_language_button(query: catbot.CallbackQuery):
 
 
 if __name__ == '__main__':
-    bot.add_member_status_task(greeting_cri, greeting)
+    bot.add_my_member_status_task(greeting_cri, greeting)
     bot.add_member_status_task(new_member_cri, new_member)
     bot.add_query_task(challenge_button_cri, challenge_button)
     bot.add_query_task(manual_operations_cri, manual_operations)
