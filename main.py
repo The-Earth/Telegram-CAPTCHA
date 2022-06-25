@@ -18,7 +18,7 @@ def timeout_callback(chat_id: int, msg_id: int, user_id: int):
     language = get_chat_language(chat_id)
     member = bot.get_chat_member(chat_id, user_id)
     bot.edit_message(chat_id, msg_id, text=config['messages'][language]['challenge_failed'].format(user_id=user_id,
-                                                                                         name=member.name),
+                                                                                                   name=member.name),
                      parse_mode='HTML')
 
 
@@ -235,15 +235,19 @@ def manual_operations(query: catbot.CallbackQuery):
     if query_token[1] == 'approve':
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages'][language]['manually_approved'].format(user_id=challenged_user_id,
-                                                                             name=html_refer(challenged_user.name),
-                                                                             admin_name=html_refer(operator.name)),
+                                                                                       name=html_refer(
+                                                                                           challenged_user.name),
+                                                                                       admin_name=html_refer(
+                                                                                           operator.name)),
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages'][language]['manually_rejected'].format(user_id=challenged_user_id,
-                                                                             name=html_refer(challenged_user.name),
-                                                                             admin_name=html_refer(operator.name)),
+                                                                                       name=html_refer(
+                                                                                           challenged_user.name),
+                                                                                       admin_name=html_refer(
+                                                                                           operator.name)),
                          parse_mode='HTML')
         try:
             bot.kick_chat_member(query.msg.chat.id, challenged_user_id)
@@ -320,6 +324,28 @@ def set_language_button(query: catbot.CallbackQuery):
     ))
 
 
+def user_id_cri(msg: catbot.Message) -> bool:
+    return bot.detect_command('/user_id', msg) and msg.reply and msg.reply_to_message.from_.id == bot.id
+
+
+def user_id(msg: catbot.Message):
+    chat_id = msg.chat.id
+    language = get_chat_language(chat_id)
+
+    captcha_msg = msg.reply_to_message
+    if captcha_msg.text_mention:
+        uid = captcha_msg.text_mention[0][1].id
+        bot.send_message(msg.chat.id, text=str(uid), reply_to_message_id=msg.reply_to_message.id)
+    else:
+        bot.send_message(chat_id, text=config['messages'][language]['check_user_id_failed'],
+                         reply_to_message_id=msg.reply_to_message.id)
+
+    try:
+        bot.delete_message(msg.chat.id, msg.id)
+    except (catbot.DeleteMessageError, catbot.InsufficientRightError):
+        pass
+
+
 if __name__ == '__main__':
     bot.add_my_member_status_task(greeting_cri, greeting)
     bot.add_member_status_task(new_member_cri, new_member)
@@ -329,5 +355,6 @@ if __name__ == '__main__':
     bot.add_member_status_task(update_restriction_cri, update_restriction)
     bot.add_msg_task(set_language_cri, set_language)
     bot.add_query_task(set_language_button_cri, set_language_button)
+    bot.add_msg_task(user_id_cri, user_id)
 
     bot.start()

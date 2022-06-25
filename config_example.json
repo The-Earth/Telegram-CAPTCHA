@@ -28,7 +28,8 @@
       "manually_approved": "<a href=\"tg://user?id={user_id}\">{name}</a> 已被管理员 {admin_name} 人工通过，欢迎加入本群！\n\nWelcome to this group! You were approved by {admin_name} manually.",
       "manually_rejected": "用户已被管理员 {admin_name} 移除出群。\n\nThe user has been removed from group by {admin_name}.",
       "set_language_prompt": "请从下方列表中选择语言：",
-      "set_language_done": "当前语言：{language}。"
+      "set_language_done": "当前语言：{language}。",
+      "check_user_id_failed": "该验证消息无对应用户ID。"
     },
     "en": {
       "self_intro": "Hi, thank you for choosing me. \n\nMy ability is telling spam bots from human users. I will start working after being granted the \"Ban users\" permission and stop when the permission is removed. When a new member joins, I will temporarily restrict their ability to send messages and challenge them with a simple math problem. I keep a record of users being restricted to prevent the user from bypassing the restriction by rejoining. I'm open sourced. Code could be found in my bio.\n\nSet my language with /set_language .",
@@ -43,7 +44,8 @@
       "manually_approved": "<a href=\"tg://user?id={user_id}\">{name}</a> was approved by {admin_name} manually. Welcome to this group!",
       "manually_rejected": "The user has been removed from group by {admin_name}.",
       "set_language_prompt": "Pick a language from the list below: ",
-      "set_language_done": "Current language: {language}."
+      "set_language_done": "Current language: {language}.",
+      "check_user_id_failed": "Unable to check user id in that CAPTCHA."
     }
   }
 }
