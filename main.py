@@ -324,11 +324,11 @@ def set_language_button(query: catbot.CallbackQuery):
     ))
 
 
-def user_id_cri(msg: catbot.Message) -> bool:
+def check_user_id_cri(msg: catbot.Message) -> bool:
     return bot.detect_command('/user_id', msg) and msg.reply and msg.reply_to_message.from_.id == bot.id
 
 
-def user_id(msg: catbot.Message):
+def check_user_id(msg: catbot.Message):
     chat_id = msg.chat.id
     language = get_chat_language(chat_id)
 
@@ -355,6 +355,6 @@ if __name__ == '__main__':
     bot.add_member_status_task(update_restriction_cri, update_restriction)
     bot.add_msg_task(set_language_cri, set_language)
     bot.add_query_task(set_language_button_cri, set_language_button)
-    bot.add_msg_task(user_id_cri, user_id)
+    bot.add_msg_task(check_user_id_cri, check_user_id)
 
     bot.start()
