@@ -242,13 +242,11 @@ def manual_operations(query: catbot.CallbackQuery):
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
-        bot.edit_message(query.msg.chat.id, query.msg.id,
-                         text=config['messages'][language]['manually_rejected'].format(user_id=challenged_user_id,
-                                                                                       name=html_refer(
-                                                                                           challenged_user.name),
-                                                                                       admin_name=html_refer(
-                                                                                           operator.name)),
-                         parse_mode='HTML')
+        bot.edit_message(query.msg.chat.id, query.msg.id, text=config['messages'][language]['manually_rejected'].format(
+            user_id=challenged_user_id,
+            name=html_refer(challenged_user.name),
+            admin_name=html_refer(operator.name)
+        ), parse_mode='HTML')
         try:
             bot.kick_chat_member(query.msg.chat.id, challenged_user_id)
         except catbot.InsufficientRightError:
