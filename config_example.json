@@ -36,7 +36,7 @@
       "self_intro": "大家好，感謝使用本機器人。\n\n我負責排除掉討厭的廣告機器人，賦予我群管中的 Ban users 權限即可開始使用，移除權限即可停用。新使用者入群時我會暫時將其禁言，並出一道小學二年級水平的口算題，列出幾個選項讓使用者選擇。\n\n我會收集其他管理員實施的禁言資訊，以防透過退群重進繞開禁言。原始碼是公開的，如果您對我的功能不滿意，可以點擊我的頭像檢視 bio 中的原始碼連結，修改並執行您自己的機器人。\n\n您可以使用 /set_language 來設定語言。",
       "button_not_for_you": "這次驗證並不針對您",
       "new_member": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 您好，本群開啟了驗證功能，請在 {timeout} 秒內點擊下面的按鈕回答這個問題： {challenge}\n\nHi! The group has enabled CAPTCHA, please click one of the buttons to answer the following question: {challenge}",
-      "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 已通過驗證，歡迎加入本群！ 如果仍然無法發言，請重新啟動 Telegram 客戶端。\n\nWelcome to this group! You have passed the CAPTCHA. If you cannot send messages, please restart the Telegram client.",
+      "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 已通過驗證，歡迎加入本群！ 如果仍然無法發言，請重新啟動 Telegram 用戶端。\n\nWelcome to this group! You have passed the CAPTCHA. If you cannot send messages, please restart the Telegram client.",
       "challenge_passed_short": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 已加入本群",
       "challenge_failed": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 沒有通過驗證，如需解封請私聊本群群管。\n\nSorry but you failed the CAPTCHA. Please contact group admins for help.",
       "manually_approve": "人工通過",
