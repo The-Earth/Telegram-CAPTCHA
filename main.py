@@ -6,7 +6,7 @@ import time
 import catbot
 from catbot.util import html_refer
 
-from challenge import Challenge
+from challenge import Challenge, MathChallenge, TextReadingChallenge
 from timeout import Timeout
 
 config = json.load(open('config.json', 'r', encoding='utf-8'))
@@ -103,7 +103,11 @@ def new_member(msg: catbot.ChatMemberUpdate):
         return
 
     language = get_chat_language(msg.chat.id)
-    problem = Challenge()
+    # Randomly challenge user with a math or text reading problem
+    if int(time.time()) % 2 == 0:
+        problem: Challenge = MathChallenge()
+    else:
+        problem: Challenge = TextReadingChallenge(config['messages'][language]['text_reading_challenge'])
     button_list = []
     answer_list = []
     for i in range(6):
@@ -233,13 +237,11 @@ def manual_operations(query: catbot.CallbackQuery):
 
     challenged_user = bot.get_chat_member(query.msg.chat.id, challenged_user_id)
     if query_token[1] == 'approve':
-        bot.edit_message(query.msg.chat.id, query.msg.id,
-                         text=config['messages'][language]['manually_approved'].format(user_id=challenged_user_id,
-                                                                                       name=html_refer(
-                                                                                           challenged_user.name),
-                                                                                       admin_name=html_refer(
-                                                                                           operator.name)),
-                         parse_mode='HTML')
+        bot.edit_message(query.msg.chat.id, query.msg.id, text=config['messages'][language]['manually_approved'].format(
+            user_id=challenged_user_id,
+            name=html_refer(challenged_user.name),
+            admin_name=html_refer(operator.name)
+        ), parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id, text=config['messages'][language]['manually_rejected'].format(
