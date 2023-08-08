@@ -97,17 +97,22 @@ class TextReadingChallenge(Challenge):
 
     def new(self):
         random_title = next(TextReadingChallenge.site.random(0, limit=1))['title']
-        challenge_text = TextReadingChallenge.site.api('query', **{
-            "format": "json",
-            "prop": "extracts",
-            "titles": random_title,
-            "utf8": 1,
-            "formatversion": "2",
-            "exintro": 1,
-            "explaintext": 1
-        })['query']['pages'][0]['extract']
+        api_payload = {
+                "format": "json",
+                "prop": "extracts",
+                "titles": random_title,
+                "utf8": 1,
+                "formatversion": "2",
+                "exintro": 1,
+                "explaintext": 1
+            }
+
+        while True:
+            challenge_text = TextReadingChallenge.site.api('query', **api_payload)['query']['pages'][0]['extract']
+            han = re.sub(r'[^\u4e00-\u9fff]', '', challenge_text)    # remove non han characters
+            if len(han) > 10:
+                break
         self.ans_index = random.randint(1, 10)
-        han = re.sub(r'[^\u4e00-\u9fff]', '', challenge_text)    # remove non han characters
         self._ans = han[self.ans_index - 1]
 
         self._text = challenge_text[:50]
