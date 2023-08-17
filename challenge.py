@@ -96,8 +96,9 @@ class TextReadingChallenge(Challenge):
         self.new()
 
     def new(self):
-        random_title = next(TextReadingChallenge.site.random(0, limit=1))['title']
-        api_payload = {
+        while True:     # Get new random article if the current one has too few han chars
+            random_title = next(TextReadingChallenge.site.random(0, limit=1))['title']
+            api_payload = {
                 "format": "json",
                 "prop": "extracts",
                 "titles": random_title,
@@ -106,12 +107,11 @@ class TextReadingChallenge(Challenge):
                 "exintro": 1,
                 "explaintext": 1
             }
-
-        while True:
             challenge_text = TextReadingChallenge.site.api('query', **api_payload)['query']['pages'][0]['extract']
             han = re.sub(r'[^\u4e00-\u9fff]', '', challenge_text)    # remove non han characters
             if len(han) > 10:
                 break
+
         self.ans_index = random.randint(1, 10)
         self._ans = han[self.ans_index - 1]
 
