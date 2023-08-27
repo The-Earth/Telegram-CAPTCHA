@@ -107,7 +107,7 @@ class TextReadingChallenge(Challenge):
                 "exintro": 1,
                 "explaintext": 1
             }
-            challenge_text = TextReadingChallenge.site.api('query', **api_payload)['query']['pages'][0]['extract']
+            challenge_text = TextReadingChallenge.site.api('query', **api_payload)['query']['pages'][0]['extract'][:50]
             han = re.sub(r'[^\u4e00-\u9fff]', '', challenge_text)    # remove non han characters
             if len(han) > 10:
                 break
@@ -115,7 +115,7 @@ class TextReadingChallenge(Challenge):
         self.ans_index = random.randint(1, 10)
         self._ans = han[self.ans_index - 1]
 
-        self._text = challenge_text[:50]
+        self._text = challenge_text
 
         cases = 6
         choices_index = random.sample(range(1, 10), cases)
