@@ -104,10 +104,7 @@ def new_member(msg: catbot.ChatMemberUpdate):
 
     language = get_chat_language(msg.chat.id)
     # Randomly challenge user with a math or text reading problem
-    if int(time.time()) % 2 == 0:
-        problem: Challenge = MathChallenge()
-    else:
-        problem: Challenge = TextReadingChallenge(config['messages'][language]['text_reading_challenge'])
+    problem: Challenge = TextReadingChallenge(config['messages'][language]['text_reading_challenge'])
     button_list = []
     answer_list = []
     for i in range(6):
