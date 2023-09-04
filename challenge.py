@@ -118,13 +118,12 @@ class TextReadingChallenge(Challenge):
         self._text = challenge_text
 
         cases = 6
-        choices_index = random.sample(range(1, 10), cases)
-        if self.ans_index not in choices_index:
-            choices_index[cases // 2] = self.ans_index
+        choices_index = random.sample(range(1, 10), cases - 1)
+        choices_index.append(self.ans_index)
         random.shuffle(choices_index)
-        # Some bots just blindly click the first button
-        if choices_index[0] == self.ans_index:
-            choices_index[0], choices_index[cases // 2] = choices_index[cases // 2], choices_index[0]
+        while choices_index[0] == self.ans_index:
+            # Some bots just blindly click the first button
+            random.shuffle(choices_index)
 
         self._choices = [han[x - 1] for x in choices_index]
 
