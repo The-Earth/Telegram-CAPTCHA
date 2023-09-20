@@ -81,7 +81,7 @@ class MathChallenge(Challenge):
 
 
 class TextReadingChallenge(Challenge):
-    site = mwclient.Site('zh.wikipedia.org')
+    site = mwclient.Site('zh.wikisource.org')
 
     def __init__(self, qus_template: str):
         """
