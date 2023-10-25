@@ -4,7 +4,7 @@ import threading
 import time
 
 import catbot
-from catbot.util import html_refer
+from catbot.util import html_escape
 
 from challenge import Challenge, MathChallenge, TextReadingChallenge
 from timeout import Timeout
@@ -122,20 +122,22 @@ def new_member(msg: catbot.ChatMemberUpdate):
                         ])
     buttons = catbot.InlineKeyboard(button_list)
 
-    sent = bot.send_message(msg.chat.id, text=config['messages'][language]['new_member'].format(
-        user_id=msg.new_chat_member.id,
-        name=html_refer(msg.new_chat_member.name),
-        timeout=config['timeout'],
-        challenge=problem.qus()
-    ), parse_mode='HTML', reply_markup=buttons)
-
-    timeout = Timeout(chat_id=msg.chat.id, user_id=msg.new_chat_member.id, msg_id=sent.id, timer=config['timeout'])
-    timeout_thread = threading.Thread(target=timeout.run, kwargs={'callback': timeout_callback,
-                                                                  'chat_id': msg.chat.id,
-                                                                  'msg_id': sent.id,
-                                                                  'user_id': msg.new_chat_member.id})
-
-    timeout_thread.start()
+    try:
+        sent = bot.send_message(msg.chat.id, text=html_escape(config['messages'][language]['new_member'].format(
+            user_id=msg.new_chat_member.id,
+            name=html_escape(msg.new_chat_member.name),
+            timeout=config['timeout'],
+            challenge=problem.qus()
+        )), parse_mode='HTML', reply_markup=buttons)
+    except catbot.APIError:
+        new_member(msg)     # rerun if any problem in sending
+    else:
+        timeout = Timeout(chat_id=msg.chat.id, user_id=msg.new_chat_member.id, msg_id=sent.id, timer=config['timeout'])
+        timeout_thread = threading.Thread(target=timeout.run, kwargs={'callback': timeout_callback,
+                                                                      'chat_id': msg.chat.id,
+                                                                      'msg_id': sent.id,
+                                                                      'user_id': msg.new_chat_member.id})
+        timeout_thread.start()
 
 
 def challenge_button_cri(query: catbot.CallbackQuery):
@@ -172,20 +174,20 @@ def challenge_button(query: catbot.CallbackQuery):
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages'][language]['challenge_passed'].format(
                              user_id=challenged_user_id,
-                             name=html_refer(challenged_user.name)),
+                             name=html_escape(challenged_user.name)),
                          parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
         time.sleep(config['shorten_after_pass_delay'])
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages'][language]['challenge_passed_short'].format(
                              user_id=challenged_user_id,
-                             name=html_refer(challenged_user.name)),
+                             name=html_escape(challenged_user.name)),
                          parse_mode='HTML')
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id,
                          text=config['messages'][language]['challenge_failed'].format(
                              user_id=challenged_user_id,
-                             name=html_refer(challenged_user.name)),
+                             name=html_escape(challenged_user.name)),
                          parse_mode='HTML')
 
 
@@ -236,15 +238,15 @@ def manual_operations(query: catbot.CallbackQuery):
     if query_token[1] == 'approve':
         bot.edit_message(query.msg.chat.id, query.msg.id, text=config['messages'][language]['manually_approved'].format(
             user_id=challenged_user_id,
-            name=html_refer(challenged_user.name),
-            admin_name=html_refer(operator.name)
+            name=html_escape(challenged_user.name),
+            admin_name=html_escape(operator.name)
         ), parse_mode='HTML')
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
     else:
         bot.edit_message(query.msg.chat.id, query.msg.id, text=config['messages'][language]['manually_rejected'].format(
             user_id=challenged_user_id,
-            name=html_refer(challenged_user.name),
-            admin_name=html_refer(operator.name)
+            name=html_escape(challenged_user.name),
+            admin_name=html_escape(operator.name)
         ), parse_mode='HTML')
         try:
             bot.kick_chat_member(query.msg.chat.id, challenged_user_id)
