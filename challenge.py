@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import random
 import re
 
+from catbot.util import html_escape
 import mwclient
 
 
@@ -129,7 +130,7 @@ class TextReadingChallenge(Challenge):
         self._choices = [han[x - 1] for x in choices_index]
 
     def qus(self):
-        return self.template.format(text=self._text, index=self.ans_index)
+        return self.template.format(text=html_escape(self._text), index=self.ans_index)
 
     def ans(self):
         return self._ans

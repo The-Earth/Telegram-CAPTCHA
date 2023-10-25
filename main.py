@@ -123,12 +123,12 @@ def new_member(msg: catbot.ChatMemberUpdate):
     buttons = catbot.InlineKeyboard(button_list)
 
     try:
-        sent = bot.send_message(msg.chat.id, text=html_escape(config['messages'][language]['new_member'].format(
+        sent = bot.send_message(msg.chat.id, text=config['messages'][language]['new_member'].format(
             user_id=msg.new_chat_member.id,
             name=html_escape(msg.new_chat_member.name),
             timeout=config['timeout'],
             challenge=problem.qus()
-        )), parse_mode='HTML', reply_markup=buttons)
+        ), parse_mode='HTML', reply_markup=buttons)
     except catbot.APIError:
         new_member(msg)     # rerun if any problem in sending
     else:
