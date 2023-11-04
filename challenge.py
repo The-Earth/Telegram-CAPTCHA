@@ -8,6 +8,11 @@ import mwclient
 
 class Challenge(ABC):
     @abstractmethod
+    def __init__(self):
+        self._ans = ''
+        self._choices = []
+
+    @abstractmethod
     def new(self):
         pass
 
@@ -15,13 +20,11 @@ class Challenge(ABC):
     def qus(self):
         pass
 
-    @abstractmethod
     def ans(self):
-        pass
+        return self._ans
 
-    @abstractmethod
     def choices(self):
-        pass
+        return self._choices
 
 
 class MathChallenge(Challenge):
@@ -74,12 +77,6 @@ class MathChallenge(Challenge):
     def qus(self):
         return self.__str__()
 
-    def ans(self):
-        return self._ans
-
-    def choices(self):
-        return self._choices
-
 
 class TextReadingChallenge(Challenge):
     site = mwclient.Site('zh.wikisource.org')
@@ -131,9 +128,3 @@ class TextReadingChallenge(Challenge):
 
     def qus(self):
         return self.template.format(text=html_escape(self._text), index=self.ans_index)
-
-    def ans(self):
-        return self._ans
-
-    def choices(self):
-        return self._choices
