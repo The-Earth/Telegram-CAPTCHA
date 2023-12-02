@@ -2,6 +2,7 @@ import json
 import re
 import threading
 import time
+import logging
 
 import catbot
 from catbot.util import html_escape
@@ -147,7 +148,8 @@ def new_member(msg: catbot.ChatMemberUpdate):
             timeout=config['timeout'],
             challenge=problem.qus()
         ), parse_mode='HTML', reply_markup=buttons)
-    except catbot.APIError:
+    except catbot.APIError as e:
+        logging.info(e.args[0])
         new_member(msg)  # rerun if any problem in sending
     else:
         timeout = Timeout(chat_id=msg.chat.id, user_id=msg.new_chat_member.id, msg_id=sent.id, timer=config['timeout'])
