@@ -106,6 +106,7 @@ class TextReadingChallenge(Challenge):
                 "explaintext": 1
             }
             challenge_text = TextReadingChallenge.site.api('query', **api_payload)['query']['pages'][0]['extract'][:50]
+            challenge_text = re.sub(r'\s', '', challenge_text)    # remove whitespace characters
             han = re.sub(r'[^\u4e00-\u9fff]', '', challenge_text)    # remove non han characters
             if len(han) > 10:
                 break
