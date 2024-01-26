@@ -54,7 +54,7 @@
       "self_intro": "Hi, thank you for choosing me. \n\nMy ability is telling spam bots from human users. I will start working after being granted the \"Ban users\" permission and stop when the permission is removed. When a new member joins, I will temporarily restrict their ability to send messages and challenge them with a simple math problem. I keep a record of users being restricted to prevent the user from bypassing the restriction by rejoining. I'm open sourced. Code could be found in my bio.\n\nSet my language with /set_language .",
       "button_not_for_you": "This challenge is not for you.",
       "new_member": "Hi <a href=\"tg://user?id={user_id}\">{name}</a> (<code>{user_id}</code>), The group has enabled CAPTCHA, please click one of the buttons to answer the following question within {timeout} seconds: \n\n{challenge}",
-      "text_reading_challenge": "<u><b>{text}</b></u>\n\nWhat is the {index} Chinese character in this underlined/bold-faced paragraph?",
+      "text_reading_challenge": "<u><b>{text}</b></u>\n\nWhat is the {serial_index} Chinese character in this underlined/bold-faced paragraph?",
       "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> (<code>{user_id}</code>) has passed the CAPTCHA. Welcome to this group! If you cannot send messages, please restart the Telegram client.",
       "challenge_passed_short": "<a href=\"tg://user?id={user_id}\">{name}</a> (<code>{user_id}</code>) joined the group",
       "challenge_failed": "<a href=\"tg://user?id={user_id}\">{name}</a> (<code>{user_id}</code>) failed the CAPTCHA. You may re-join the group and try again.",

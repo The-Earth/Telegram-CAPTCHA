@@ -127,5 +127,22 @@ class TextReadingChallenge(Challenge):
 
         self._choices = [han[x - 1] for x in choices_index]
 
+    def __index_to_serial(index: int) -> str:
+        units_digits = index % 10
+        ten_digits = (index // 10) % 10
+        suffix = 'th'
+        if ten_digits != 1:
+            if units_digits == 1:
+                suffix = 'st'
+            elif units_digits == 2:
+                suffix = 'nd'
+            elif units_digits == 3:
+                suffix = 'rd'
+        return '{index}{suffix}'.format(index = index, suffix = suffix)
+
     def qus(self):
-        return self.template.format(text=html_escape(self._text), index=self.ans_index)
+        return self.template.format(
+            text=html_escape(self._text),
+            index=self.ans_index,
+            serial_index=self.__index_to_serial(self.ans_index)
+        )
