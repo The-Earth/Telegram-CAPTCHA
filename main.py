@@ -114,7 +114,7 @@ def new_member(msg: catbot.ChatMemberUpdate):
 
     language = get_chat_language(msg.chat.id)
     # Randomly challenge user with a math or text reading problem
-    problem: Challenge = TextReadingChallenge(config['messages'][language]['text_reading_challenge'])
+    problem: Challenge = TextReadingChallenge(config['messages'][language]['text_reading_challenge'], language)
     button_list: list[list[catbot.InlineKeyboardButton]] = []
     answer_list: list[catbot.InlineKeyboardButton] = []
     for i in range(6):

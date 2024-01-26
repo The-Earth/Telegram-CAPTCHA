@@ -4,6 +4,7 @@ import re
 
 from catbot.util import html_escape
 import mwclient
+import humanize
 
 
 class Challenge(ABC):
@@ -81,7 +82,7 @@ class MathChallenge(Challenge):
 class TextReadingChallenge(Challenge):
     site = mwclient.Site('zh.wikisource.org')
 
-    def __init__(self, qus_template: str):
+    def __init__(self, qus_template: str, language: str):
         """
         :param qus_template: Template message for question. Use string prepared for str.format() method.
                              Required arguments are {text} and {index}
@@ -92,6 +93,7 @@ class TextReadingChallenge(Challenge):
         self._ans = ''
         self._choices: list[str] = []
         self.new()
+        self._language = language
 
     def new(self):
         while True:     # Get new random article if the current one has too few han chars
@@ -128,4 +130,18 @@ class TextReadingChallenge(Challenge):
         self._choices = [han[x - 1] for x in choices_index]
 
     def qus(self):
-        return self.template.format(text=html_escape(self._text), index=self.ans_index)
+        return self.template.format(
+            text=html_escape(self._text),
+            index=TextReadingChallenge.ordinal(self.ans_index, self._language)
+        )
+
+    @staticmethod
+    def ordinal(number: int, language: str) -> str:
+        if language.startswith('zh'):
+            return str(number)
+        elif language == 'en':
+            humanize.deactivate()
+            return humanize.ordinal(number)
+        else:
+            humanize.activate(language)
+            return humanize.ordinal(number)
