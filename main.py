@@ -61,10 +61,11 @@ def get_chat_language(chat_id: int) -> str:
         return 'en'
 
 
-def match_blacklist(token: str) -> bool:
+def match_blacklist(tokens: list[str]) -> bool:
     for reg in bot.config['blacklist']:
-        if re.search(reg, token):
-            return True
+        for token in tokens:
+            if re.search(reg, token):
+                return True
 
     return False
 
@@ -111,7 +112,8 @@ def new_member_cri(msg: catbot.ChatMemberUpdate) -> bool:
 def new_member(msg: catbot.ChatMemberUpdate):
     try:
         bot.silence_chat_member(msg.chat.id, msg.new_chat_member.id)
-        if match_blacklist(msg.new_chat_member.name):
+        user_chat = bot.get_chat(msg.new_chat_member.id)
+        if match_blacklist([msg.new_chat_member.name, user_chat.bio if user_chat.bio is not None else '']):
             bot.kick_chat_member(msg.chat.id, msg.new_chat_member.id)
             return
     except catbot.InsufficientRightError:
