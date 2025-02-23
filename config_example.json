@@ -16,7 +16,7 @@
     "zh-tw"
   ],
   "anti_flood": {
-    "period": "60",
+    "period": 60,
     "count": 3
   },
   "messages": {
