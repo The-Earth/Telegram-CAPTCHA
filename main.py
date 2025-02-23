@@ -2,15 +2,39 @@ import re
 import threading
 import time
 import logging
+from collections import defaultdict
 
 import catbot
 from catbot.util import html_escape
 
 from challenge import Challenge, TextReadingChallenge
+from anti_flood import AntiFlood
 from timeout import Timeout
 
-bot = catbot.Bot(config_path='config.json')
+
+class CaptchaBot(catbot.Bot):
+    def __init__(self, config_path):
+        super().__init__(config_path=config_path)
+
+        self.anti_flood_period: int = int(self.config['anti_flood']['period'])
+        self.anti_flood_count: int = int(self.config['anti_flood']['count'])
+
+        self.flood_messages: defaultdict[str, list[catbot.ChatMemberUpdate]] = defaultdict(list)
+        self.anti_floods: defaultdict[str, AntiFlood] = defaultdict(AntiFlood)
+
+
+bot = CaptchaBot(config_path='config.json')
 t_lock = threading.Lock()
+
+
+def test_if_flooding(msg: catbot.ChatMemberUpdate) -> bool:
+    chat_id = msg.chat.id
+    current_time = msg.date
+    with t_lock:
+        for item in filter(lambda x: x.date < current_time - bot.anti_flood_period, bot.flood_messages[chat_id]):
+            bot.flood_messages[chat_id].remove(item)
+        bot.flood_messages[chat_id].append(msg)
+    return len(bot.flood_messages[chat_id]) >= bot.anti_flood_count
 
 
 def timeout_callback(chat_id: int, msg_id: int, user_id: int):
@@ -70,6 +94,10 @@ def match_blacklist(tokens: list[str]) -> bool:
     return False
 
 
+def msg_contain_anti_flood_advice(msg: catbot.Message) -> bool:
+    return any(map(lambda x: x.startswith('/enable_anti_flood'), msg.commands))
+
+
 def greeting_cri(msg: catbot.ChatMemberUpdate) -> bool:
     if msg.new_chat_member.id == bot.id \
             and msg.new_chat_member.status == 'member' \
@@ -119,59 +147,75 @@ def new_member(msg: catbot.ChatMemberUpdate):
     except catbot.InsufficientRightError:
         return
 
+    chat_id = msg.chat.id
     language = get_chat_language(msg.chat.id)
-    # Randomly challenge user with a math or text reading problem
-    problem: Challenge = TextReadingChallenge(bot.config['messages'][language]['text_reading_challenge'], language)
-    button_list: list[list[catbot.InlineKeyboardButton]] = []
-    answer_list: list[catbot.InlineKeyboardButton] = []
-    for i in range(6):
-        if problem.choices()[i] == problem.ans():
-            answer_list.append(catbot.InlineKeyboardButton(
-                text=problem.choices()[i],
-                callback_data=f'{msg.new_chat_member.id}_correct'
-            ))
-        else:
-            answer_list.append(catbot.InlineKeyboardButton(
-                text=problem.choices()[i],
-                callback_data=f'{msg.new_chat_member.id}_wrong'
-            ))
-    button_list.append(answer_list)
-    button_list.append([
-        catbot.InlineKeyboardButton(
-            text=bot.config['messages'][language]['manually_approve'],
-            callback_data=f'{msg.new_chat_member.id}_approve'
-        ),
-        catbot.InlineKeyboardButton(
-            text=bot.config['messages'][language]['manually_reject'],
-            callback_data=f'{msg.new_chat_member.id}_reject'
-        )
-    ])
-    buttons = catbot.InlineKeyboard(button_list)
+    is_flooding = test_if_flooding(msg)
 
-    try:
-        sent = bot.send_message(msg.chat.id, text=bot.config['messages'][language]['new_member'].format(
+    if bot.anti_floods[chat_id].enabled:
+        bot.anti_floods[chat_id].counter += 1
+        text = bot.config['messages'][language]['anti_flood_enabled'].format(
+            num=bot.anti_floods[chat_id].counter
+        )
+        try:
+            bot.edit_message(chat_id, bot.anti_floods[chat_id].msg_id, text=text)
+        except catbot.APIError as e:
+            logging.info(e.args[0])
+    else:
+        # Randomly challenge user with a math or text reading problem
+        problem: Challenge = TextReadingChallenge(bot.config['messages'][language]['text_reading_challenge'], language)
+        button_list: list[list[catbot.InlineKeyboardButton]] = []
+        answer_list: list[catbot.InlineKeyboardButton] = []
+        for i in range(6):
+            if problem.choices()[i] == problem.ans():
+                answer_list.append(catbot.InlineKeyboardButton(
+                    text=problem.choices()[i],
+                    callback_data=f'{msg.new_chat_member.id}_correct'
+                ))
+            else:
+                answer_list.append(catbot.InlineKeyboardButton(
+                    text=problem.choices()[i],
+                    callback_data=f'{msg.new_chat_member.id}_wrong'
+                ))
+        button_list.append(answer_list)
+        button_list.append([
+            catbot.InlineKeyboardButton(
+                text=bot.config['messages'][language]['manually_approve'],
+                callback_data=f'{msg.new_chat_member.id}_approve'
+            ),
+            catbot.InlineKeyboardButton(
+                text=bot.config['messages'][language]['manually_reject'],
+                callback_data=f'{msg.new_chat_member.id}_reject'
+            )
+        ])
+        buttons = catbot.InlineKeyboard(button_list)
+        text = bot.config['messages'][language]['new_member'].format(
             user_id=msg.new_chat_member.id,
             name=html_escape(msg.new_chat_member.name),
             timeout=bot.config['timeout'],
             challenge=problem.qus()
-        ), parse_mode='HTML', reply_markup=buttons)
-    except catbot.APIError as e:
-        logging.info(e.args[0])
-        new_member(msg)  # rerun if any problem in sending
-    else:
-        timeout = Timeout(
-            chat_id=msg.chat.id,
-            user_id=msg.new_chat_member.id,
-            msg_id=sent.id,
-            timer=bot.config['timeout']
         )
-        timeout_thread = threading.Thread(target=timeout.run, kwargs={
-            'callback': timeout_callback,
-            'chat_id': msg.chat.id,
-            'msg_id': sent.id,
-            'user_id': msg.new_chat_member.id
-        })
-        timeout_thread.start()
+        if is_flooding:
+            text += '\n\n' + bot.config['messages'][language]['flood_detected']
+
+        try:
+            sent = bot.send_message(msg.chat.id, text=text, parse_mode='HTML', reply_markup=buttons)
+        except catbot.APIError as e:
+            logging.info(e.args[0])
+            new_member(msg)  # rerun if any problem in sending
+        else:
+            timeout = Timeout(
+                chat_id=msg.chat.id,
+                user_id=msg.new_chat_member.id,
+                msg_id=sent.id,
+                timer=bot.config['timeout']
+            )
+            timeout_thread = threading.Thread(target=timeout.run, kwargs={
+                'callback': timeout_callback,
+                'chat_id': msg.chat.id,
+                'msg_id': sent.id,
+                'user_id': msg.new_chat_member.id
+            })
+            timeout_thread.start()
 
 
 def challenge_button_cri(query: catbot.CallbackQuery):
@@ -209,38 +253,48 @@ def challenge_button(query: catbot.CallbackQuery):
         return
 
     challenged_user = bot.get_chat_member(query.msg.chat.id, challenged_user_id)
+    keep_anti_flood = msg_contain_anti_flood_advice(query.msg)
     if query_token[1] == 'correct':
+        text = bot.config['messages'][language]['challenge_passed'].format(
+            user_id=challenged_user_id,
+            name=html_escape(challenged_user.name)
+        )
+        if keep_anti_flood:
+            text += '\n' + bot.config['messages'][language]['flood_detected']
         bot.edit_message(
             query.msg.chat.id,
             query.msg.id,
-            text=bot.config['messages'][language]['challenge_passed'].format(
-                user_id=challenged_user_id,
-                name=html_escape(challenged_user.name)
-            ),
+            text=text,
             parse_mode='HTML'
         )
         read_record_and_lift(query.msg.chat.id, challenged_user_id)
         time.sleep(bot.config['shorten_after_pass_delay'])
         try:
+            text = bot.config['messages'][language]['challenge_passed_short'].format(
+                user_id=challenged_user_id,
+                name=html_escape(challenged_user.name)
+            )
+            if keep_anti_flood:
+                text += '\n' + bot.config['messages'][language]['flood_detected']
             bot.edit_message(
                 query.msg.chat.id,
                 query.msg.id,
-                text=bot.config['messages'][language]['challenge_passed_short'].format(
-                    user_id=challenged_user_id,
-                    name=html_escape(challenged_user.name)
-                ),
+                text=text,
                 parse_mode='HTML'
             )
         except catbot.MessageNotFoundError:
             pass
     else:
+        text = bot.config['messages'][language]['challenge_failed'].format(
+            user_id=challenged_user_id,
+            name=html_escape(challenged_user.name)
+        )
+        if keep_anti_flood:
+            text += '\n' + bot.config['messages'][language]['flood_detected']
         bot.edit_message(
             query.msg.chat.id,
             query.msg.id,
-            text=bot.config['messages'][language]['challenge_failed'].format(
-                user_id=challenged_user_id,
-                name=html_escape(challenged_user.name)
-            ),
+            text=text,
             parse_mode='HTML'
         )
 
@@ -427,6 +481,48 @@ def check_user_id(msg: catbot.Message):
         bot.delete_message(msg.chat.id, msg.id)
     except (catbot.DeleteMessageError, catbot.InsufficientRightError):
         pass
+
+
+def enable_anti_flood_cri(msg: catbot.Message) -> bool:
+    return bot.detect_command('/enable_anti_flood', msg)
+
+
+@bot.msg_task(enable_anti_flood_cri)
+def enable_anti_flood(msg: catbot.Message):
+    chat_id = msg.chat.id
+    language = get_chat_language(chat_id)
+    operator = bot.get_chat_member(chat_id, msg.from_.id)
+    if operator.status != 'administrator' and operator.status != 'creator':
+        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'])
+        return
+
+    sent = bot.send_message(chat_id, text=bot.config['messages'][language]['anti_flood_enabled'].format(num=0))
+    bot.anti_floods[chat_id].enable(sent)
+
+
+def disable_anti_flood(msg: catbot.Message) -> bool:
+    return bot.detect_command('/disable_anti_flood', msg)
+
+
+@bot.msg_task(disable_anti_flood)
+def disable_anti_flood(msg: catbot.Message):
+    chat_id = msg.chat.id
+    language = get_chat_language(chat_id)
+    operator = bot.get_chat_member(chat_id, msg.from_.id)
+    if operator.status != 'administrator' and operator.status != 'creator':
+        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'])
+        return
+
+    if bot.anti_floods[chat_id].enabled:
+        anti: AntiFlood = bot.anti_floods[chat_id]
+        anti.disable()
+        try:
+            bot.send_message(
+                chat_id,
+                text=bot.config['messages'][language]['anti_flood_disabled'].format(num=anti.counter)
+            )
+        except catbot.APIError as e:
+            logging.info(e.args[0])
 
 
 if __name__ == '__main__':

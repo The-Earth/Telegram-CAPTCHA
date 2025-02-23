@@ -97,7 +97,7 @@ class TextReadingChallenge(Challenge):
 
     def new(self):
         while True:     # Get new random article if the current one has too few han chars
-            random_title = next(TextReadingChallenge.site.random(0, limit=1))['title']
+            random_title = next(TextReadingChallenge.site.random(0, api_chunk_size=1))['title']
             api_payload = {
                 "format": "json",
                 "prop": "extracts",

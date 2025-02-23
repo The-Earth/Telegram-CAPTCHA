@@ -15,6 +15,10 @@
     "zh-cn",
     "zh-tw"
   ],
+  "anti_flood": {
+    "period": "60",
+    "count": 3
+  },
   "messages": {
     "zh-cn": {
       "self_intro": "大家好，感谢使用本机器人。\n\n我负责排除掉讨厌的广告机器人，赋予我群管中的 Ban users 权限即可开始使用，移除权限即可停用。新用户入群时我会暂时将其禁言，并出一道简单的问题，列出几个选项让用户选择。\n\n我会收集其他管理员实施的禁言信息，以防通过退群重进绕开禁言。源代码是公开的，如果您对我的功能不满意，可以点我的头像查看 bio 中的源代码链接，修改并运行您自己的机器人。\n\n您可以使用 /set_language 来设置语言。",
@@ -31,13 +35,16 @@
       "manually_rejected": "用户（<code>{user_id}</code>）已被管理员 {admin_name} 移除出群。",
       "set_language_prompt": "请从下方列表中选择语言：",
       "set_language_done": "当前语言：{language}。",
-      "check_user_id_failed": "该验证消息无对应用户ID。"
+      "check_user_id_failed": "该验证消息无对应用户ID。",
+      "flood_detected": "检测到大量入群 /enable_anti_flood",
+      "anti_flood_enabled": "防刷屏已启动，未显示的入群数量 {num}\n禁用：/disable_anti_flood",
+      "anti_flood_disabled": "防刷屏已禁用，未显示的入群数量 {num}"
     },
     "zh-tw": {
       "self_intro": "大家好，感謝使用本機器人。\n\n我負責排除掉討厭的廣告機器人，賦予我群管中的 Ban users 權限即可開始使用，移除權限即可停用。新使用者入群時我會暫時將其禁言，並出一道簡單的問題，列出幾個選項讓使用者選擇。\n\n我會收集其他管理員實施的禁言資訊，以防透過退群重進繞開禁言。原始碼是公開的，如果您對我的功能不滿意，可以點我的頭貼檢視 bio 中的原始碼連結，修改並執行您自己的機器人。\n\n您可以使用 /set_language 來設定語言。",
       "button_not_for_you": "這次驗證並不針對您",
       "new_member": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 您好，本群開啟了驗證功能，請在 {timeout} 秒內點擊下面的按鈕回答這個問題： \n\n{challenge}",
-      "text_reading_challenge": "<u><b>{text}</b></u>\n\n以上下劃線/粗體文字中的第{index}個中文字元是什什麼？",
+      "text_reading_challenge": "<u><b>{text}</b></u>\n\n以上下劃線/粗體文字中的第{index}個中文字元是什麼？",
       "challenge_passed": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 已通過驗證，歡迎加入本群！ 如果仍然無法發言，請重新啟動 Telegram 用戶端。",
       "challenge_passed_short": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 已加入本群",
       "challenge_failed": "<a href=\"tg://user?id={user_id}\">{name}</a> （<code>{user_id}</code>） 沒有通過驗證，請自行重新入群再次驗證。",
@@ -48,7 +55,10 @@
       "manually_rejected": "使用者（<code>{user_id}</code>）已被管理員 {admin_name} 移除出群。",
       "set_language_prompt": "請從下方列表中選擇語言：",
       "set_language_done": "當前語言：{language}。",
-      "check_user_id_failed": "該驗證訊息無對應使用者ID。"
+      "check_user_id_failed": "該驗證訊息無對應使用者ID。",
+      "flood_detected": "檢測到大量入群 /enable_anti_flood",
+      "anti_flood_enabled": "防洗版已啓動，未顯示的入群數量 {num}\n禁用：/disable_anti_flood",
+      "anti_flood_disabled": "防洗版已禁用，未顯示的入群數量 {num}"
     },
     "en": {
       "self_intro": "Hi, thank you for choosing me. \n\nMy ability is telling spam bots from human users. I will start working after being granted the \"Ban users\" permission and stop when the permission is removed. When a new member joins, I will temporarily restrict their ability to send messages and challenge them with a simple math problem. I keep a record of users being restricted to prevent the user from bypassing the restriction by rejoining. I'm open sourced. Code could be found in my bio.\n\nSet my language with /set_language .",
@@ -65,7 +75,10 @@
       "manually_rejected": "The user (<code>{user_id}</code>) has been removed from group by {admin_name}.",
       "set_language_prompt": "Pick a language from the list below: ",
       "set_language_done": "Current language: {language}.",
-      "check_user_id_failed": "Unable to check user id in that CAPTCHA."
+      "check_user_id_failed": "Unable to check user id in that CAPTCHA.",
+      "flood_detected": "Flood detected /enable_anti_flood",
+      "anti_flood_enabled": "Anti-flood enabled. New members not showed: {num}\nTo disable: /disable_anti_flood",
+      "anti_flood_disabled": "Anti-flood disabled. New members not showed: {num}"
     }
   }
 }
