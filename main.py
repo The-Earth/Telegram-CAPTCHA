@@ -37,17 +37,20 @@ def test_if_flooding(msg: catbot.ChatMemberUpdate) -> bool:
     return len(bot.flood_messages[chat_id]) >= bot.anti_flood_count
 
 
-def timeout_callback(chat_id: int, msg_id: int, user_id: int):
+def timeout_callback(chat_id: int, msg_id: int, user_id: int, is_flooding: bool):
     language = get_chat_language(chat_id)
     member = bot.get_chat_member(chat_id, user_id)
     try:
+        text = bot.config['messages'][language]['challenge_failed'].format(
+            user_id=user_id,
+            name=member.name
+        )
+        if is_flooding:
+            text += '\n' + bot.config['messages'][language]['flood_detected']
         bot.edit_message(
             chat_id,
             msg_id,
-            text=bot.config['messages'][language]['challenge_failed'].format(
-                user_id=user_id,
-                name=member.name
-            ),
+            text=text,
             parse_mode='HTML'
         )
     except catbot.MessageNotFoundError:
@@ -213,7 +216,8 @@ def new_member(msg: catbot.ChatMemberUpdate):
                 'callback': timeout_callback,
                 'chat_id': msg.chat.id,
                 'msg_id': sent.id,
-                'user_id': msg.new_chat_member.id
+                'user_id': msg.new_chat_member.id,
+                'is_flooding': is_flooding
             })
             timeout_thread.start()
 
