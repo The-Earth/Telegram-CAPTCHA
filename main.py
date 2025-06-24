@@ -530,4 +530,5 @@ def disable_anti_flood(msg: catbot.Message):
 
 
 if __name__ == '__main__':
-    bot.start()
+    with bot:
+        bot.start()
