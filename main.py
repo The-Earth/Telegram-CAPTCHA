@@ -570,7 +570,7 @@ def remove_whitelist_cri(msg: catbot.Message):
     return bot.detect_command('/remove_whitelist', msg)
 
 
-@bot.msg_task(add_whitelist_cri)
+@bot.msg_task(remove_whitelist_cri)
 def remove_whitelist(msg: catbot.Message):
     chat_id = msg.chat.id
     language = get_chat_language(chat_id)
