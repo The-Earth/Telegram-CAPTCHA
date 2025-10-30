@@ -562,7 +562,7 @@ def add_whitelist(msg: catbot.Message):
             return
 
     bot.config['whitelist'].append(to_whitelist_id)
-    bot.send_message(chat_id, text=bot.config['messages'][language]['add_whitelist_succeeded'],
+    bot.send_message(chat_id, text=bot.config['messages'][language]['add_whitelist_succeeded'].format(user_id=to_whitelist_id),
                      reply_to_message_id=msg.id)
 
 
@@ -581,7 +581,7 @@ def remove_whitelist(msg: catbot.Message):
         return
 
     if msg.reply:
-        to_whitelist_id = int(msg.reply_to_message.from_.id)
+        to_remove_id = int(msg.reply_to_message.from_.id)
     else:
         msg_split = msg.text.split(' ')
         if len(msg_split) < 2:
@@ -589,17 +589,17 @@ def remove_whitelist(msg: catbot.Message):
                              reply_to_message_id=msg.id)
             return
         try:
-            to_whitelist_id = int(msg_split[1])
+            to_remove_id = int(msg_split[1])
         except ValueError:
             bot.send_message(chat_id, text=bot.config['messages'][language]['remove_whitelist_prompt'],
                              reply_to_message_id=msg.id)
             return
 
     try:
-        bot.config['whitelist'].remove(to_whitelist_id)
+        bot.config['whitelist'].remove(to_remove_id)
     except ValueError:
         pass
-    bot.send_message(chat_id, text=bot.config['messages'][language]['remove_whitelist_succeeded'],
+    bot.send_message(chat_id, text=bot.config['messages'][language]['remove_whitelist_succeeded'].format(user_id=to_remove_id),
                      reply_to_message_id=msg.id)
 
 
