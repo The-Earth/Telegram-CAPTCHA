@@ -2,7 +2,7 @@ import time
 
 
 class Timeout:
-    _running = []
+    _running: list['Timeout'] = []
 
     def __init__(self, chat_id: int, user_id: int, msg_id: int, timer: int):
         self.chat_id = chat_id
@@ -20,6 +20,8 @@ class Timeout:
             result = callback(**callback_args)
             self._valid = False
             return result
+        else:
+            return None
 
     def stop(self):
         self._valid = False

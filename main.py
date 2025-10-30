@@ -144,7 +144,8 @@ def new_member(msg: catbot.ChatMemberUpdate):
     try:
         bot.silence_chat_member(msg.chat.id, msg.new_chat_member.id)
         user_chat = bot.get_chat(msg.new_chat_member.id)
-        if match_blacklist([msg.new_chat_member.name, user_chat.bio if user_chat.bio is not None else '']):
+        if int(msg.new_chat_member.id) not in bot.config['whitelist'] and \
+                match_blacklist([msg.new_chat_member.name, user_chat.bio if user_chat.bio is not None else '']):
             bot.kick_chat_member(msg.chat.id, msg.new_chat_member.id)
             return
     except catbot.InsufficientRightError:
@@ -497,7 +498,8 @@ def enable_anti_flood(msg: catbot.Message):
     language = get_chat_language(chat_id)
     operator = bot.get_chat_member(chat_id, msg.from_.id)
     if operator.status != 'administrator' and operator.status != 'creator':
-        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'])
+        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'],
+                         reply_to_message_id=msg.reply_to_message.id)
         return
 
     sent = bot.send_message(chat_id, text=bot.config['messages'][language]['anti_flood_enabled'].format(num=0))
@@ -514,7 +516,8 @@ def disable_anti_flood(msg: catbot.Message):
     language = get_chat_language(chat_id)
     operator = bot.get_chat_member(chat_id, msg.from_.id)
     if operator.status != 'administrator' and operator.status != 'creator':
-        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'])
+        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'],
+                         reply_to_message_id=msg.reply_to_message.id)
         return
 
     if bot.anti_floods[chat_id].enabled:
@@ -527,6 +530,77 @@ def disable_anti_flood(msg: catbot.Message):
             )
         except catbot.APIError as e:
             logging.info(e.args[0])
+
+
+def add_whitelist_cri(msg: catbot.Message):
+    return bot.detect_command('/add_whitelist', msg)
+
+
+@bot.msg_task(add_whitelist_cri)
+def add_whitelist(msg: catbot.Message):
+    chat_id = msg.chat.id
+    language = get_chat_language(chat_id)
+    operator = bot.get_chat_member(chat_id, msg.from_.id)
+    if operator.status != 'administrator' and operator.status != 'creator':
+        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'],
+                         reply_to_message_id=msg.id)
+        return
+
+    if msg.reply:
+        to_whitelist_id = int(msg.reply_to_message.from_.id)
+    else:
+        msg_split = msg.text.split(' ')
+        if len(msg_split) < 2:
+            bot.send_message(chat_id, text=bot.config['messages'][language]['add_whitelist_prompt'],
+                             reply_to_message_id=msg.id)
+            return
+        try:
+            to_whitelist_id = int(msg_split[1])
+        except ValueError:
+            bot.send_message(chat_id, text=bot.config['messages'][language]['add_whitelist_prompt'],
+                             reply_to_message_id=msg.id)
+            return
+
+    bot.config['whitelist'].append(to_whitelist_id)
+    bot.send_message(chat_id, text=bot.config['messages'][language]['add_whitelist_succeeded'],
+                     reply_to_message_id=msg.id)
+
+
+def remove_whitelist_cri(msg: catbot.Message):
+    return bot.detect_command('/remove_whitelist', msg)
+
+
+@bot.msg_task(add_whitelist_cri)
+def remove_whitelist(msg: catbot.Message):
+    chat_id = msg.chat.id
+    language = get_chat_language(chat_id)
+    operator = bot.get_chat_member(chat_id, msg.from_.id)
+    if operator.status != 'administrator' and operator.status != 'creator':
+        bot.send_message(msg.chat.id, text=bot.config['messages'][language]['permission_denied'],
+                         reply_to_message_id=msg.id)
+        return
+
+    if msg.reply:
+        to_whitelist_id = int(msg.reply_to_message.from_.id)
+    else:
+        msg_split = msg.text.split(' ')
+        if len(msg_split) < 2:
+            bot.send_message(chat_id, text=bot.config['messages'][language]['remove_whitelist_prompt'],
+                             reply_to_message_id=msg.id)
+            return
+        try:
+            to_whitelist_id = int(msg_split[1])
+        except ValueError:
+            bot.send_message(chat_id, text=bot.config['messages'][language]['remove_whitelist_prompt'],
+                             reply_to_message_id=msg.id)
+            return
+
+    try:
+        bot.config['whitelist'].remove(to_whitelist_id)
+    except ValueError:
+        pass
+    bot.send_message(chat_id, text=bot.config['messages'][language]['remove_whitelist_succeeded'],
+                     reply_to_message_id=msg.id)
 
 
 if __name__ == '__main__':

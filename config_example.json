@@ -10,6 +10,9 @@
   "blacklist": [
 
   ],
+  "whitelist": [
+
+  ],
   "languages": [
     "en",
     "zh-cn",
@@ -38,7 +41,11 @@
       "check_user_id_failed": "该验证消息无对应用户ID。",
       "flood_detected": "检测到大量入群 /enable_anti_flood",
       "anti_flood_enabled": "防刷屏已启动，未显示的入群数量 {num}\n禁用：/disable_anti_flood",
-      "anti_flood_disabled": "防刷屏已禁用，未显示的入群数量 {num}"
+      "anti_flood_disabled": "防刷屏已禁用，未显示的入群数量 {num}",
+      "add_whitelist_prompt": "使用方法：\n1. 用 /add_whitelist 回复需要加入白名单用户的消息\n2. /add_whitelist <Telegram数字ID>",
+      "add_whitelist_succeeded": "已将 {user_id} 加入白名单",
+      "remove_whitelist_prompt": "使用方法：\n1. 用 /remove_whitelist 回复需要移出白名单用户的消息\n2. /remove_whitelist <Telegram数字ID>",
+      "remove_whitelist_succeeded": "已将 {user_id} 移出白名单"
     },
     "zh-tw": {
       "self_intro": "大家好，感謝使用本機器人。\n\n我負責排除掉討厭的廣告機器人，賦予我群管中的 Ban users 權限即可開始使用，移除權限即可停用。新使用者入群時我會暫時將其禁言，並出一道簡單的問題，列出幾個選項讓使用者選擇。\n\n我會收集其他管理員實施的禁言資訊，以防透過退群重進繞開禁言。原始碼是公開的，如果您對我的功能不滿意，可以點我的頭貼檢視 bio 中的原始碼連結，修改並執行您自己的機器人。\n\n您可以使用 /set_language 來設定語言。",
@@ -58,7 +65,11 @@
       "check_user_id_failed": "該驗證訊息無對應使用者ID。",
       "flood_detected": "檢測到大量入群 /enable_anti_flood",
       "anti_flood_enabled": "防洗版已啓動，未顯示的入群數量 {num}\n禁用：/disable_anti_flood",
-      "anti_flood_disabled": "防洗版已禁用，未顯示的入群數量 {num}"
+      "anti_flood_disabled": "防洗版已禁用，未顯示的入群數量 {num}",
+      "add_whitelist_prompt": "使用方法：\n1. 用 /add_whitelist 回覆需要加入白名單使用者的讯息\n2. /add_whitelist <Telegram數字ID>",
+      "add_whitelist_succeeded": "已將 {user_id} 加入白名單",
+      "remove_whitelist_prompt": "使用方法：\n1. 用 /remove_whitelist 回覆需要移出白名單使用者的讯息\n2. /remove_whitelist <Telegram數字ID>",
+      "remove_whitelist_succeeded": "已將 {user_id} 移出白名單"
     },
     "en": {
       "self_intro": "Hi, thank you for choosing me. \n\nMy ability is telling spam bots from human users. I will start working after being granted the \"Ban users\" permission and stop when the permission is removed. When a new member joins, I will temporarily restrict their ability to send messages and challenge them with a simple math problem. I keep a record of users being restricted to prevent the user from bypassing the restriction by rejoining. I'm open sourced. Code could be found in my bio.\n\nSet my language with /set_language .",
@@ -78,7 +89,11 @@
       "check_user_id_failed": "Unable to check user id in that CAPTCHA.",
       "flood_detected": "Flood detected /enable_anti_flood",
       "anti_flood_enabled": "Anti-flood enabled. New members not showed: {num}\nTo disable: /disable_anti_flood",
-      "anti_flood_disabled": "Anti-flood disabled. New members not showed: {num}"
+      "anti_flood_disabled": "Anti-flood disabled. New members not showed: {num}",
+      "add_whitelist_prompt": "Usage: \n1. Reply to the user to be added to whitelist with /add_whitelist \n2. /add_whitelist <Telegram number ID>",
+      "add_whitelist_succeeded": "{user_id} added to whitelist",
+      "remove_whitelist_prompt": "Usage: \n1. Reply to the user to be removed from whitelist with /remove_whitelist \n2. /remove_whitelist <Telegram number ID>",
+      "remove_whitelist_succeeded": "{user_id} removed from whitelist"
     }
   }
 }
