@@ -561,7 +561,10 @@ def add_whitelist(msg: catbot.Message):
                              reply_to_message_id=msg.id)
             return
 
-    bot.config['whitelist'].append(to_whitelist_id)
+    new_list = bot.config['whitelist']
+    new_list.append(to_whitelist_id)
+    new_list = list(set(new_list))
+    bot.config['whitelist'] = new_list
     bot.send_message(chat_id, text=bot.config['messages'][language]['add_whitelist_succeeded'].format(user_id=to_whitelist_id),
                      reply_to_message_id=msg.id)
 
