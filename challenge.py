@@ -80,9 +80,7 @@ class MathChallenge(Challenge):
 
 
 class TextReadingChallenge(Challenge):
-    site = mwclient.Site('zh.wikisource.org')
-
-    def __init__(self, qus_template: str, language: str):
+    def __init__(self, qus_template: str, language: str, user_agent: str = 'TextReadingChallenger/1.0'):
         """
         :param qus_template: Template message for question. Use string prepared for str.format() method.
                              Required arguments are {text} and {index}
@@ -92,12 +90,13 @@ class TextReadingChallenge(Challenge):
         self.template = qus_template
         self._ans = ''
         self._choices: list[str] = []
-        self.new()
         self._language = language
+        self.site = mwclient.Site('zh.wikisource.org', clients_useragent=user_agent)
+        self.new()
 
     def new(self):
         while True:     # Get new random article if the current one has too few han chars
-            random_title = next(TextReadingChallenge.site.random(0, api_chunk_size=1))['title']
+            random_title = next(self.site.random(0, api_chunk_size=1))['title']
             api_payload = {
                 "format": "json",
                 "prop": "extracts",
@@ -107,7 +106,7 @@ class TextReadingChallenge(Challenge):
                 "exintro": 1,
                 "explaintext": 1
             }
-            challenge_text = TextReadingChallenge.site.api('query', **api_payload)['query']['pages'][0]['extract'][:50]
+            challenge_text = self.site.api('query', **api_payload)['query']['pages'][0]['extract'][:50]
             challenge_text = re.sub(r'\s', '', challenge_text)    # remove whitespace characters
             han = re.sub(r'[^\u4e00-\u9fff]', '', challenge_text)    # remove non han characters
             if len(han) > 10:

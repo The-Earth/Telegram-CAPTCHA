@@ -165,9 +165,11 @@ def new_member(msg: catbot.ChatMemberUpdate):
         except catbot.APIError as e:
             logging.info(e.args[0])
     else:
+        template = bot.config['messages'][language]['text_reading_challenge']
+        user_agent = bot.config['user_agent']
         # Randomly challenge user with a math or text reading problem
-        # problem: Challenge = TextReadingChallenge(bot.config['messages'][language]['text_reading_challenge'], language)
-        problem: Challenge = MathChallenge()
+        problem: Challenge = TextReadingChallenge(template, language, user_agent)
+        # problem: Challenge = MathChallenge()
         button_list: list[list[catbot.InlineKeyboardButton]] = []
         answer_list: list[catbot.InlineKeyboardButton] = []
         for i in range(6):

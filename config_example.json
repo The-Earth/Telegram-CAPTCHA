@@ -4,6 +4,7 @@
     "enable": false,
     "proxy_url": "http://127.0.0.1:1080"
   },
+  "user_agent": "Bot/1.0",
   "timeout": 180,
   "shorten_after_pass_delay": 15,
   "record": "record.json",
