@@ -5,7 +5,7 @@ import logging
 from collections import defaultdict
 
 import catbot
-from catbot.util import html_escape
+from catbot.util import html_escape, partly_hide_name
 
 from challenge import Challenge, TextReadingChallenge, MathChallenge
 from anti_flood import AntiFlood
@@ -43,7 +43,7 @@ def timeout_callback(chat_id: int, msg_id: int, user_id: int, is_flooding: bool)
     try:
         text = bot.config['messages'][language]['challenge_failed'].format(
             user_id=user_id,
-            name=member.name
+            name=partly_hide_name(member.name)
         )
         if is_flooding:
             text += '\n' + bot.config['messages'][language]['flood_detected']
@@ -197,7 +197,7 @@ def new_member(msg: catbot.ChatMemberUpdate):
         buttons = catbot.InlineKeyboard(button_list)
         text = bot.config['messages'][language]['new_member'].format(
             user_id=msg.new_chat_member.id,
-            name=html_escape(msg.new_chat_member.name),
+            name=partly_hide_name(msg.new_chat_member.name),
             timeout=bot.config['timeout'],
             challenge=problem.qus()
         )
@@ -265,7 +265,7 @@ def challenge_button(query: catbot.CallbackQuery):
     if query_token[1] == 'correct':
         text = bot.config['messages'][language]['challenge_passed'].format(
             user_id=challenged_user_id,
-            name=html_escape(challenged_user.name)
+            name=partly_hide_name(challenged_user.name)
         )
         if keep_anti_flood:
             text += '\n' + bot.config['messages'][language]['flood_detected']
@@ -280,7 +280,7 @@ def challenge_button(query: catbot.CallbackQuery):
         try:
             text = bot.config['messages'][language]['challenge_passed_short'].format(
                 user_id=challenged_user_id,
-                name=html_escape(challenged_user.name)
+                name=partly_hide_name(challenged_user.name)
             )
             if keep_anti_flood:
                 text += '\n' + bot.config['messages'][language]['flood_detected']
@@ -295,7 +295,7 @@ def challenge_button(query: catbot.CallbackQuery):
     else:
         text = bot.config['messages'][language]['challenge_failed'].format(
             user_id=challenged_user_id,
-            name=html_escape(challenged_user.name)
+            name=partly_hide_name(challenged_user.name)
         )
         if keep_anti_flood:
             text += '\n' + bot.config['messages'][language]['flood_detected']
@@ -362,7 +362,7 @@ def manual_operations(query: catbot.CallbackQuery):
             query.msg.id,
             text=bot.config['messages'][language]['manually_approved'].format(
                 user_id=challenged_user_id,
-                name=html_escape(challenged_user.name),
+                name=partly_hide_name(challenged_user.name),
                 admin_name=html_escape(operator.name)
             ),
             parse_mode='HTML'
@@ -374,7 +374,7 @@ def manual_operations(query: catbot.CallbackQuery):
             query.msg.id,
             text=bot.config['messages'][language]['manually_rejected'].format(
                 user_id=challenged_user_id,
-                name=html_escape(challenged_user.name),
+                name=partly_hide_name(challenged_user.name),
                 admin_name=html_escape(operator.name)
             ),
             parse_mode='HTML')
