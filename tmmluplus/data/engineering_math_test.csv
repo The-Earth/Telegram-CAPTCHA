@@ -1,0 +1,129 @@
+question,A,B,C,D,answer
+給定兩向量u=[1 1 2]T及 v=[2 -1 1]T ，下列選項何者錯誤？,此兩向量的外積（cross product）為[-3 -3 3]T,此兩向量的夾角為 π/3,此兩向量的內積（inner product）為 3,此兩向量的範數（norm）乘積為 6,A
+"2已知\(X\)和\(Y\)的聯合機率密度函數 (Joint probability density function) 為 \[ f_{X,Y}(x,y) = \begin{cases} 2, & 0 \leq y \leq x \leq 1 \\ 0, & 其他 \end{cases} \] 下列何者錯誤？",在 0 ≤ x ≤1 ， fX( x) = 2 x,"條件機率密度函數 \[ f_{Y|X}(y|x) = \begin{cases} \frac{1}{x}, & 0 \leq y \leq x \leq 1 \\ 0, & 其他 \end{cases} \]","條件機率密度函數 \[ f_{X|Y}(x|y) = \begin{cases} \frac{1}{y}, & 0 \leq y \leq x \leq 1 \\ 0, & 其他 \end{cases} \]",在 0 ≤ y ≤1 ， fY( y) = 2(1 - y),C
+"利用拉普拉斯轉換（Laplacetransform）解下列二階微分方程式y""+5y'+6y=2δ(t-1)，y(0)=0 ， y'(0) = 0 ，其中 δ (t ) 為脈衝函數（unit impulse），對於 t > 1 ，下列何者正確？",\( y = 2e^{-2(t-1)} + 2e^{-3(t-1)} \),\( y = 2e^{2(t-1)} + 2e^{-3(t-1)} \),\( y = 2e^{-2(t-1)} - 2e^{-3(t-1)} \),\( y = 2e^{-2(t-1)} - 2e^{3(t-1)} \),C
+令 \( A = \left[ \begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{array} \right] \)，則矩陣 \( e^A \) 的像空間(image space)維度為何？,1,3,4,2,B
+\( \lim_{x \to 11} \frac{\sqrt{x} - \sqrt{11}}{x^2 - 121} = ? \),\( \frac{1}{22\sqrt{11}} \),\( \frac{1}{11\sqrt{11}} \),不存在,\( \frac{1}{44\sqrt{11}} \),D
+下列矩陣何者是不可被「對角線化（diagonalizable）」？,\(\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}\),\(\begin{bmatrix} 1 & 2 \\ 1 & 1 \end{bmatrix}\),\(\begin{bmatrix} 1 & 1 \\ 2 & 1 \end{bmatrix}\),\(\begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}\),A
+"若原函數 \( f(t) = Ae^{-t} \cos(2t) + Be^{-t} \sin(2t) \)，對應的拉普拉斯轉換 \( F(s) = \frac{2s + 5}{s^2 + as + b} \)，A, B, a, b 為實數。則 a/b 為何值？",0.1,0.4,2,1,B
+令矩陣 \( A = \left[ \begin{array}{cccc} 1 & 0 & 1 & 1 \\ 2 & 0 & 2 & 2 \\ 0 & 1 & 0 & 3 \end{array} \right] \)，則 \( A^T A \) 的秩(rank)為何？,3,4,2,1,C
+"設 \(\bm{A}\) 是 \(m \times n\) 矩陣，\(\bm{A}^{\mathrm{T}}\) 是 \(\bm{A}\) 的轉置，若 \(\bm{\eta}_1, \bm{\eta}_2, \cdots, \bm{\eta}_t\) 是齊次方程組 \(\bm{A}^{\mathrm{T}}\bm{x}=\bm{0}\) 的基礎解系，則秩 \(r(\bm{A})=\)",\(m-t\);,\(n-m\).,\(n-t\);,\(t\);,A
+"求微分方程式 \( \frac{d^2y}{dx^2} + \cos(x) \frac{dy}{dx} + \sin(x)y = 1 - x^3 \), \( y(0) = 1 \), \( \frac{dy}{dx}(0) = 0 \) 若此方程式的級數解可表示為，則 c3 為何？ ",\( C_3 = \frac{1}{6} \),\( C_3 = \frac{1}{3} \),\( C_3 = -\frac{1}{3} \),\( C_3 = -\frac{1}{6} \),C
+"已知 \( f(x) = x + \frac{a}{x-1} \), \( (a > 0) \)之相對極小值為 \( 3 \), 則 \( a \) 為？",3,2,4,1,D
+設 \(\bm{A}\) 為三階可逆矩陣，將 \(\bm{A}\) 的第 \(1\) 行乘以 \(-2\) 得到矩陣 \(\bm{B}\)。,\((A)\bm{A}^{-1}\) 的第 \(1\) 行乘以 \(-2\) 得到矩陣 \(\bm{B}^{-1}\)；,\((D)\bm{A}^{-1}\) 的第一列乘以 \(\cfrac{1}{2}\) 得到矩陣 \(\bm{B}^{-1}\)。,\((B)\bm{A}^{-1}\) 的第一列乘以 \(-\cfrac{1}{2}\) 得到矩陣 \(\bm{B}^{-1}\)；,\((C)\bm{A}^{-1}\) 的第 \(1\) 行乘以 \(2\) 得到矩陣 \(\bm{B}^{-1}\)；,C
+"設 A =
+\(\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{bmatrix}\),
+B =
+\(\begin{bmatrix}
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} + ka_{33} & a_{33} \\
+a_{11} & a_{12} + ka_{13} & a_{13} \\
+\end{bmatrix}\),
+P =
+\(\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{bmatrix}\),
+\( P_2 =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & k & 1 \\
+\end{bmatrix}\),
+則 A = ( ).",\( P_1^{-1}BP_2^{-1} \),\( P_2^{-1}BP_1^{-1} \),\( P_1^{-1}P_2^{-1}B \),\( BP_1^{-1}P_2^{-1} \).,A
+"矩陣 \( A = \begin{bmatrix} 0 & -2 & -3 \\ 1 & 3 & 3 \\ 0 & 0 & 1 \end{bmatrix} \) 的3個特徵向量 (eigenvectors) 為 \( \begin{bmatrix} -2 \\ 1 \\ 0 \end{bmatrix} \), \( \begin{bmatrix} -3 \\ 0 \\ 1 \end{bmatrix} \), \( \begin{bmatrix} -1 \\ 1 \\ 1 \end{bmatrix} \)，則下列敘述何者為誤？",\( \begin{bmatrix} -2 \\ 1 \\ 0 \end{bmatrix} \) 是 \( A^3 + 6 A^2 \) 的一個特徵向量,\( \begin{bmatrix} -3 \\ 0 \\ 1 \end{bmatrix} \) 是 \( A^5 + 4 A^3 - A \) 的一個特徵向量,\( \begin{bmatrix} -1 \\ 1 \\ 1 \end{bmatrix} \) 是 \( A^2 - 2 A \) 的一個特徵向量,\( \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix} \) 是 \( A^5 - 3 A^4 + 2 A^2 \) 的一個特徵向量,C
+"二階常微分方程式y""+4y'+3y=0，y(0)=3，y'(0)=-5的解為何？",\( y = 2e^{-x} + e^{-3x} \),\( y = 2e^{-x} + 3e^{-3x} \),\( y = 7e^{x} - 4e^{3x} \),\( y = 2e^{x} + 3e^{-3x} \),A
+\( \lim_{x \to \infty} \frac{\ln x}{x^{1/111}} = ? \),\( 0 \),\( \text{不存在} \),\( \frac{1}{111} \),\( 111 \),A
+"已知x≠0 時，\( f(x) = x^{10} \sin \left( \frac{1}{x} \right) \), \( f(x) \) 在 \( x = 0 \) 連續，則 \( f(0) = ? \)？",-1,\( \frac{1}{10} \),0,1,C
+"已知 \( f(x) = x^4 - x^2 \)， \( x \in [0,1] \)，則\( f(x) \)在 \([0，1]\) 中最小值為何？",\( -\frac{1}{4} \),\( -\frac{1}{3} \),\( -\frac{1}{2} \),\( -\frac{1}{5} \),A
+"某雜訊的機率密度函數（probability density function）為[-1,3] 的均勻分佈，其變異數（variance）為 A。經過增益為 5 的放大器放大以後，其變異數為 B。則 A,B 各值為何？","( A = \frac{4}{3}, B = \frac{20}{3} \)","\( A = \frac{16}{3}, B = \frac{80}{3} \)","\( A = \frac{4}{3}, B = \frac{100}{3} \)","\( A = \frac{16}{3}, B = \frac{400}{3} \)",C
+"若某曲線的斜率為 4x 且通過點 (2,9) ，求其曲線方程式？",\( y = \frac{1}{4}x^2 + 8 \),\( y = \frac{1}{2}x^2 + 7 \),\( y = 2x^2 + 1 \),\( y = 4x^2 - 7 \),C
+這個無窮級數 \( f(z) = (\frac{1}{z} + \frac{1}{z^2}+  \frac{1}{z^3} + \ldots) + (1 + \frac{z}{3} + \frac{z^2}{9} + \frac{z^3}{27} + \frac{z^4}{81} + \ldots) \) 的 收斂域 (Region of convergence) 為何？,\( |z| > 1 \) 或 \( |z| < \frac{1}{3} \),\( |z| > 3 \) 或 \( |z| < 1 \),\frac{1}{3} \leq |z| < 1,1 < |z| < 3,D
+"下列哪一個是下方方程式的解？
+
+\[ \begin{bmatrix} 1 & 2 & 3 & 1 \\ 2 & 2 & 1 & 2 \\ 3 & 1 & 1 & 3 \\ 1 & 2 & 3 & 2 \end{bmatrix} \begin{bmatrix} 1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 0 & 0 & 0 & 0 \\ 9 & 10 & 11 & 12 \end{bmatrix} + \begin{bmatrix} 1 & -2 & -3 & -1 \\ -2 & 2 & 1 & -2 \\ -3 & 1 & 1 & 3 \\ -1 & -2 & 3 & -2 \end{bmatrix} \begin{bmatrix} 1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 0 & 0 & 0 & 0 \\ 9 & 10 & 11 & 12 \end{bmatrix} = ? \]",\[ \begin{bmatrix} 2 & 4 & 6 & 8 \\ 20 & 24 & 28 & 32 \\ 64 & 72 & 80 & 88 \\ 0 & 0 & 0 & 0 \end{bmatrix} \],\[ \begin{bmatrix} 2 & 4 & 6 & 8 \\ 20 & 24 & 28 & 32 \\ 64 & 76 & 88 & 80 \\ 0 & 0 & 0 & 0 \end{bmatrix} \],\[ \begin{bmatrix} 2 & 4 & 6 & 8 \\ 20 & 24 & 28 & 32 \\ 64 & 72 & 88 & 80 \\ 0 & 0 & 0 & 0 \end{bmatrix} \],\[ \begin{bmatrix} 2 & 4 & 6 & 8 \\ 20 & 24 & 28 & 32 \\ 64 & 72 & 88 & 80 \\ 0 & 0 & 4 & 0 \end{bmatrix} \],A
+哪些陳述是正確的？,對於前一個問題中相同的設定，系統 \( x_1u_1 + x_2u_2 = v \) 的最小平方法解是 \( x_1 = \frac{11}{7} \) 和 \( x_2 = -\frac{4}{7} \)。,"如果 \( B = \{v_1, v_2,..., v_n\} \) 是 V 的一組非有序基底，則對於 V 中的任何向量 u，無法通過以下方法來確定 u 的坐標","設 V 為一個內積空間，\( \langle u_1,u_2 \rangle \) 表示任意兩個向量 \( u_1,u_2 \) 在 V 中的內積。如果 \( B = \{v_1, v_2,..., v_n\} \) 是 V 的一組有序基底，那麼對於 V 中的任何向量 u，u 的坐標可以通過
+\[ [u]_B = \left[ \langle u,v_1 \rangle, \langle u,v_2 \rangle, ... , \langle u,v_n \rangle \right]^T \] 來給出","設 \( u_1 = (-1,2,1) \)，\( u_2 = (1,1,-2) \)，\( v = (10,5,10) \)，且 \( S = \text{span}(u_1,u_2) \)。向量 v 與集合 S 之間的（最短）距離是 \( \frac{17\sqrt{30}}{7} \)。",A
+"假設 \( F(x) = \int_{4}^{x^2} \sqrt{t^2 + 8} dt \), \( F'(-1) = ? \)",\( -6 \),\( 6 \),\( 3 \),\( -3 \),A
+"求線段 \( y = x \), \( 0 \leq x \leq 1 \) 線 x 軸旋轉所成圓的表面積？",\( \sqrt{2\pi} \),\( \frac{3\sqrt{2\pi}}{2} \),\( \frac{\sqrt{2\pi}}{2} \),\( 2\sqrt{2\pi} \),A
+"二階常微分方程式(x-2)^2 y""-5(x-2)y'+8y=0的解之型式為何？",y = c1 ( x - 2)^2 + c2 ( x - 2)^6,y = c1 ( x - 2)^2 + c2 ( x - 2)^4,y = c1 ( x - 2)^3 + c2 (x - 2)^5,y = c1 ( x - 2)^3 + c2 ( x - 2)^4,B
+我們決定使用一個矩陣來儲存所有網頁連結。如果網頁 i 有 n 個外部連結，而 j 是它連結的其中一個網站，那麼我們將 ij 元素設為 1/n。否則，如果 n = 0，則 ij 元素為零。以下哪些是不正確的？,這個矩陣的秩 > (總網頁數 - 1),每行的和為 0 或 1,零行是可能的，因為有些頁面沒有外部連結,零列是可能的，因為有些頁面從未被連結,A
+令矩陣 \( X = \left[ \begin{array}{ccccc} 1 & 0 & 0 & 0 \\ 2 & -1 & -1 & 1 \\ 0 & 0 & -9 & 9 \\ 3 & 0 & -5 & 5 \end{array} \right] \)，下列何者不是 \( X \) 的特徵值(eigenvalue)？,1,-4,-1,2,D
+以下哪一個陳述是正確的：,如果矩陣A的列是線性獨立的，那麼Ax = b對每個b都有唯一解。,如果U和W是向量空間V的兩個子空間，則U和W的交集也是V的子空間。,如果兩個方陣具有相同的行列式，那麼它們是相似的。,"如果T是一個線性變換，且\(\{u_1, ..., u_k\}\)是T的定義域中一組線性獨立的集合，那麼\(\{T(u_1), ..., T(u_k)\}\)也是線性獨立的。""",B
+"曲線 \( y = x + \frac{1}{x} \) 與直線 \( x = 1 \), \( x = 2 \), \( y = 0 \), 所圍區域的面積 x 軸旋轉所形成的旋轉體積為？",\( \frac{29\pi}{6} \),\( \frac{23\pi}{6} \),\( \frac{35\pi}{6} \),( \frac{11\pi}{6} \),A
+\( A = \begin{bmatrix} -1 & 0 & 3 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{bmatrix} \) 求在可逆矩陣 P 下對應對角化為 \( P^{-1}AP = \begin{bmatrix} -1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{bmatrix} \) • 則P的第一行行向量為何？,\[ \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix} \],\[ \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} \],\[ \begin{bmatrix} -1 \\ 0 \\ 0 \end{bmatrix} \],\[ \begin{bmatrix} 0 \\ -1 \\ 1 \end{bmatrix} \],C
+"因數 \( f(t) = 2 \cos(3t) \), \( 0 \leq t \leq \frac{\pi}{3} \)，若在 \( t=0 \) 處, f(t)的傅立葉餘弦級數（Fourier cosine series）收斂到 A，傅立葉正弦級數（Fourier sine series）收斂到 B；在  \( t = \frac{\pi}{3} \) 處，f(t)的傅立葉餘弦級數（Fourier cosine series）收斂到 C，傅立葉正弦級數（Fourier sine series）收斂到 D。則 A,B,C,D 各值為何？ ","A=2, B=0, C=-2, D=0","A=2, B=0, C=2, D=0 1","A=0, B=0, C=0, D=0","A=0, B=2, C=-2, D=0",A
+"令 A, B 均為 n 階方陣，則下列何者恆成立？",det(AB)=det(BA),AB=BA,det(A+B)=det(A )+det(B ),(AB)T=ATBT,A
+四個硬幣先後向上投擲後落地，會有十六種不同結果。定義一隨機變數 X，X 等於每一個結果 中硬幣人像朝上的個數，試問下列何者不正確？,X=2 的機率，即 P ( X = 2 ) = 0.375,X 的變異數是 1.5,X=3 的機率，即 P ( X = 3) = 0.25,X 的平均值是 2,B
+n 階方陣 A 與 B等價，則,|A| ≠ |B|,"諾 |A| ≠ 0, 則 |B| ≠ 0",|A| = -|B|,|A| = |B|,B
+\( \mathbb{R}^2 \) 的仿射變換是一個形式為 \( T(x) = Ax + b \) 的函數 \( T : \mathbb{R}^2 \rightarrow \mathbb{R}^2 \)，其中 \( A \) 是一個可逆的 \( 2 \times 2 \) 矩陣，\( b \) 屬於 \( \mathbb{R}^2 \)。下列哪些陳述不是正確的？,\( T^{-1}(x) = A^{-1}x + A^{-1}b \),仿射變換將平行直線映射為平行直線,仿射變換將直線映射為直線,沒有任何仿射變換能將直線映射成圓形,A
+"區域 \( R = \{(x, y): x^2 + y^2 \leq 1\} \), 求 \( \iint_{R} e^{1+x^2+y^2} dxdy = ? \)",π (e^2-e),2π (e^2+e),4π (e^2+e),3π (e^2+e),A
+函數 f(t)之拉普拉斯轉換（Laplace transform）為ℒ{f(t)}，令 \( \mathcal{L}\{f(t)\} = \frac{1}{s(s+1)^2} \) ，則下列何者正確？ ,\( f(t) = -te^{-t} + e^{-t} + 1 \),\( f(t) = -te^{-t} - e^{-t} - 1 \),\( f(t) = te^{-t} + e^{-t} + 1 \),\( f(t) = -te^{-t} - e^{-t} + 1 \),D
+\( \int \frac{2}{(x-1)(x-2)(x-3)} dx = ? \),\( 2\ln|x-1| + 2\ln|x-2| + 2\ln|x-3| + C \),\( \ln|x-1| - 2\ln|x-2| + 2\ln|x-3| + C \),\( \ln|x-1| - 2\ln|x-2| + \ln|x-3| + C \),\( \ln|x-1| + 2\ln|x-2| + \ln|x-3| + C \),C
+一微分方程式 \( y'' - 2y' = 6e^{2x} - 4e^{-2x} \) 的起始條件分別為 \( y(0) = -1 \) 及 \( y'(0) = 6 \)，其解為 \( y(x) = ae^{2x} + bxe^{2x} + ce^{-2x} + d \)，試問下列何者不正確？,\( d = -\frac{3}{2} \),\( b = 3 \),\( c = -\frac{1}{2} \),\( a = -1 \),D
+"設向量u=(3, -2, -5)，v=(1, 4, -4)，w = (0, 3, 2)，則u• (v✕ w ) 之值為何？其中運算元×表示為外積（cross product），u•v則表示為 u 和 v 的內積（inner product）",84,92,49,56,C
+"若 \( f(x) = xe^{\frac{-x^2}{2}} \), \( f(x) \)的臨界點為何？","\( x = \frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2} \)","\( x = 1, -1 \)","\( x = \sqrt{2}, -\sqrt{2} \)",\( x = 0 \),B
+讓 \( F(\mathbb{R}) \) 表示所有從 R 到 R 的函數的集合。選擇下列不是 \( F(\mathbb{R}) \) 的子集合，它們是線性獨立的。,"\(\{e^t, e^{2t}, ..., e^{nt}, ...\}\)","\(\{t^2 - 2t + 5, 2t^2 - 5t + 10, t^2\}\)","\(\{t, t \sin t\}\)","\(\{\sin t, \sin^2 t, \cos^2 t, 1\}\)",D
+"一座山距離海平面的高度可用 z(x, y) = 3500-2x2-3y2 來表示，試求出在 P(-3, 2)這點朝上坡最陡峭 的方向？","[12, 12]","[-12, 12]","[-12, -12]","[12, -12]",D
+下列何者不是「可對角化的（Diagonalizable）」矩陣？,\(\begin{bmatrix} -3 & -2 \\ 4 & 3 \end{bmatrix}\),\(\begin{bmatrix} 1 & 4 \\ 2 & 3 \end{bmatrix}\),\(\begin{bmatrix} 1 & 1 \\ 4 & 1 \end{bmatrix}\),\(\begin{bmatrix} 1 & 1 \\ -4 & -3 \end{bmatrix}\),D
+矩陣 \( A = \begin{bmatrix} -3 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & -1 \end{bmatrix} \)，則 \( A^2 \) 的特徵值 (eigenvalues)，不可能是下列哪一個？,16,4,1,9,B
+"求函數f(x)=4x3-8x2+7x-2在[ 0 , 1] 中，滿足均值定理的 c 為何？即滿足等式 \( f''(c) = \frac{f(1) - f(0)}{1-0} \) 的 \( c \) 值為？",0,\( \frac{2}{3} \),\( \frac{1}{3} \),1,C
+李卡地方程式 (Riccati equation) \( \frac{dy}{dx} = \frac{1}{3x}y^2 + \frac{1}{x}y - \frac{6}{x} \)，則利用下列何公式代換，換為可以解决的標準微分方程式？,\( y = -5 + \frac{1}{u} \),\( y = 5 + \frac{1}{u} \),\( y = 3 + \frac{1}{u} \),\( y = -3 + \frac{1}{u} \),C
+"令矩陣A=\[
+\begin{bmatrix}
+1 & -3 & 4 & -2 & 5 \\
+2 & -6 & 9 & -1 & 8 \\
+2 & -6 & 9 & -1 & 9 \\
+-1 & 3 & -4 & 2 & -5 \\
+\end{bmatrix}
+\]，則下列選項中何者為矩陣 A 的秩數（rank）？",4,3,1,2,B
+設 X 為一具有常態分布(normal distribution)的連續隨機變數，其平均值(mean)為 1，標準差(standard deviation)為 2。若將其標準化為平均值為 0，標準差為 1 的標準常態分布(standard normal distribution)，對應的隨機變數為 Z。則 X 和 Z 的關係式為何？,Z=(1/2)(X-1),Z=(1/4)(X-1)^2,Z=(1/2)X-1,Z=X-1,A
+下列方陣 A，何者存在矩陣 P 滿足 PTP=I，且 PTAP 為對角矩陣？,\( A = \begin{bmatrix} -1 & 1 & -3 \\ 1 & 0 & 2 \\ 2 & -1 & 1 \end{bmatrix} \),\( A = \begin{bmatrix} 3 & -2 & 1 \\ -2 & 1 & 0 \\ 1 & 0 & 4 \end{bmatrix} \),\( A = \begin{bmatrix} 3 & 2 & 4 \\ -3 & 1 & 5 \\ 0 & -1 & 2 \end{bmatrix} \),\( A = \begin{bmatrix} 3 & 0 & 6 \\ 0 & 1 & 0 \\ 1 & 0 & 5 \end{bmatrix} \),B
+"某元件使用壽命X（單位：小時），其機率密度函數（probability density function）為f(x)=0.005ekx, x≥0 。則k值及元件平均使用壽命為何？",k=0.005 ，平均使用壽命∞小時,k=-0.005 ，平均使用壽命200 小時,k=0.005 ，平均使用壽命 200 小時,k=-0.005 ，平均使用壽命∞小時,B
+求心臟線 (cardioid) r＝ 2 (1 +cosθ )的面積？,4π,6π,8π,2π,B
+求 \( f(x) = \frac{1}{1 - x} \)，在 \( x = 0 \) 的泰勒級數（Taylor Series）為何？,\( \sum_{k=0}^{\infty} \frac{(-1)^k x^k}{k} \),\( \sum_{k=0}^{\infty} \frac{x^k}{k} \),\( \sum_{k=0}^{\infty} x^k \),\( \sum_{k=0}^{\infty} \frac{x^k}{k!} \),C
+"設 \(\bm{A},\bm{B}\) 都是四階非零矩陣，且 \(\bm{AB}=\bm{O}\)，則必有：",若 \(r(\bm{A})=4\)，則 \(r(\bm{B})=1\),若 \(r(\bm{A})=1\)，則 \(r(\bm{B})=3\)；,若 \(r(\bm{A})=2\)，則 \(r(\bm{B})=2\)；,若 \(r(\bm{A})=3\)，則 \(r(\bm{B})=1\)；,D
+考慮向量 \( \mathbf{u} = \left[ \begin{array}{c} 1 \\ 2 \\ 1 \end{array} \right] \) 和 \( \mathbf{v} = \left[ \begin{array}{c} 0 \\ 1 \\ 3 \end{array} \right] \)。若 \( \mathbf{u} \) 分解為 \( \mathbf{u}_1 + \mathbf{u}_2 \)，其中 \( \mathbf{u}_1 \) 為 \( \mathbf{u} \) 在 \( \mathbf{v} \) 的投影 (projection)，則 \( \mathbf{u}_2 \) 為何？,\( \left[ \begin{array}{c} 0 \\ 0.5 \\ 1.5 \end{array} \right] \),\( \left[ \begin{array}{c} 1 \\ 1.5 \\ -0.5 \end{array} \right] \),\( \left[ \begin{array}{c} 0 \\ 0.5 \\ -1.5 \end{array} \right] \),\( \left[ \begin{array}{c} 1 \\ 1.5 \\ 0.5 \end{array} \right] \),B
+"假設 \( Q = [q_1 \ q_2 \ q_3] = \begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & -1 \\ 1 & -1 & -1 \end{bmatrix} \)。設 \( S_{12} = \text{span}(q_1, q_2) \)，並且 \( S_{23} = \text{span}(q_2, q_3) \)。哪些陳述是真的？",\( Q \) 的行向量形成行空間的一個基。,\( \text{span}(q_1) \) 是子空間 \( S_{23} \) 的正交補空間。,兩個子空間 \( S_{12} \) 和 \( S_{23} \) 的交集形成一個向量空間。,兩個子空間 \( S_{12} \) 和 \( S_{23} \) 的聯集形成一個向量空間。,C
+"設 A, B A, B 均階矩陣，且 AB=A+B，則 (1) 若 A 可逆，則 B 可逆；(2) 若 B 可逆，則 A+B 可逆；(3) 若 B 可逆，則 A 可逆；(4) A-E 恆可逆。 上述命題中，正確的命題共有",1 個,4 個,3 個,2 個,B
+給定一複變函數(complex function) f(z) = \frac{z+i}{sin(z)} ，則此函數在 z = 0 的殘餘數(residue)為何？ ,1,-i,0,i,D
+給定兩向量 u=[2 -1 3]T及v=[4 -1 2]T，分解u為u1+u2，其中u1為u在v的垂直投影（orthogonal projection），則下列選項何者錯誤？,向量 \( u_1 = \begin{bmatrix} 20/7 \\ -5/7 \\ 10/7 \end{bmatrix} \),\( u_2 \) 的範數 (norm) \( ||u_2|| = \sqrt{161/7} \),向量 \( u_1 \) 和 \( u_2 \) 的內積 (inner product) 為零,向量 \( u_2 \) 和 \( v \) 的外積 (cross product) 為零向量,D
+考慮聯立方程組Ax=0，其中 A為R^{8x10}。若此方程組的通解含有6個任意常數，則A的值域空間 （rangespace）維度（dimension）為何？,8,3,4,6,C
+"一微分方程式 \( y'' + 4y = f(t) \)，其中 \( f(t) = \begin{cases} 0, & \text{for } 0 \leq t < 4, \\ 3, & \text{for } t \geq 4 \end{cases} \)，其起始條件分別為 \( y(0) = 1 \) 及 \( y'(0) = 0 \)，其解為 \( y(t) = \cos(at) + b(c - \cos(d(t - 4)))H(t - 4) \)，其中 H(t)是 Heaviside 或 unit step 函數，試問下列何者不正確？",d=2,a=2,b = \frac{3}{2},c=1,C
+"已知 \( f(x,y) = \sin x \cos y \)，在 \(\left(\frac{\pi}{2}, -\pi\right)\) 附近，則 \( f(x,y) \) 的最高點，則下列何者為真？","\( f(x, y) \) 無最小值","\( f\left(\frac{\pi}{2}, \pi\right) \) 為相對極大值","\( f\left(\frac{\pi}{2}, \pi\right) \) 為相對極小值","\( \left(\frac{\pi}{2}, \pi\right) \) 是 \( f(x, y) \) 的鞍點",C
+\( \int \frac{e^{\sqrt{x}}}{\sqrt{x}} dx = ? \),\( 2e^{\sqrt{x}} + C \),\( \sqrt{x}e^{\sqrt{x}} + C \),\( e^{\sqrt{x}} + C \),\( 2\sqrt{x}e^{\sqrt{x}} + C \),A
+"假設 \( x^y = y^x \), \( (x,y > 0) \),  求 \( \frac{dy}{dx} = ? \)",\( \frac{xy \ln x - y^2}{xy \ln y - x^2} \),\( \frac{xy \ln y - y^2}{xy \ln x - x^2} \),\( \frac{xy \ln y - x^2}{xy \ln x - y^2} \),\( \frac{xy \ln x - x^2}{xy \ln y - y^2} \),B
+設 A 為 n 階方陣，且滿足 A^2 = E 則下列結論正確的是？,A≠ E，則 A+E 不可逆,A≠ E，則 A+E 可逆,A+E 可逆,A+E 可逆,A
+給定 \( Z = X + iY = (1 - i)^{20} = re^{i \theta} \) ，則下列敘述何者錯誤？,\( \theta = 0 \),\( Z = -2^{10} \),\( Y = 0 \),\( r = 2^{10} \),A
+"令矩陣 \( A = \begin{bmatrix} -3 & 4 & 1 \\ 0 & 4 & 1 \\ 0 & 0 & -1 \end{bmatrix} \), 則 \( A^2 \) 的特徵值 (eigenvalues) 不是下列那一個選項？",9,1,16,4,D
+\( A = \begin{bmatrix} 3 & 1 \\ 2 & 4 \end{bmatrix} \)，其反矩陣 (Inverse matrix) 為 \( B = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \)，下列何者正確？,d = 0.3,a = -0.1,c = 0.2,b = 0.1,A
+求定積分 \( \int_{0}^{1} xe^{-x} dx = ? \),\( -1 + 2e^{-1} \),\( 1 - 2e^{-1} \),\( -1 - 2e^{-1} \),\( 1 + 2e^{-1} \),B
+令 f ( t ) = cos ( π t ) δ ( t - 1)，其中δ( t )為脈衝函數 (impulse function)， f ( t ) 的拉氏轉換 (Laplace transform)為何？,-e^(-s),e^(-s),-e^(s),0,A
+"設
+
+\[ \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 7 \\ 3 & 5 & 3 \end{bmatrix} \]
+
+等於
+
+\[ \begin{bmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{bmatrix} \begin{bmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{bmatrix} \]
+
+以下哪些是正確的？",\( u_{11} = 1 \),\( u_{12} = 2 \),\( l_{21} = 2 \),以上方程式不可能成立，因此無法得到 \( u_{11} \)、\( u_{12} \)，等等。,D
+矩陣 \( A = \begin{bmatrix} -1 & 0 & 0 & 0 \\ 8 & 1 & 0 & 0 \\ -4 & -8 & 1 & 0 \\ 5 & -4 & 8 & -1 \end{bmatrix} \) 和矩陣 \( B = \begin{bmatrix} -1 & 1 & -1 & -3 \\ 0 & 2 & 2 & -1 \\ 0 & 0 & -3 & 1 \\ 0 & 0 & 0 & 4 \end{bmatrix} \)，則此二矩陣的乘積 \( AB \) 之行列式 \( \text{Determinant} \) 為何？,det( AB) = 12,det( AB) = 24,det( AB) = -24,det( AB) = -12,B
+"設 A, B, C 為同階矩陣，且 ABC=E，則下列哪一個等式不一定成立(　)。",B^-1A^-1C^-1=E,CAB=E,BCA=E,C^-1A^-1B^-1=E。,D
+函數 \( f(x) = 3x - (x - 1)^{\frac{3}{2}} \) 最大值為何？,7,5,1,3,A
+考慮聯立方程組 Ax=0，其中 A∈R^(8x10)。若此方程組的通解含有 6 個任意常數，則A的值域空間（range space）維度（dimension）為何？ ,6,3,8,4,D
+"向量a=[1,2,3]，向量b=[-4,-5,-6]，設兩向量之夾角為θ，則cosθ = ？",\( \frac{-\sqrt{3}}{2} \),\( \frac{16\sqrt{22}}{77} \),\( \frac{\sqrt{3}}{2} \),\( \frac{-16\sqrt{22}}{77} \),D
+"對於兩個 \( n \times n \) 矩陣 A 和 B，交換子被定義為 \([A, B] = AB - BA\)。讓 0 表示 \( n \times n \) 零矩陣。對於 \( n \times n \) 矩陣 A、B 和 C，以下哪個陳述是不正確的？","\([A, BC] = [A, B]C + B[A, C]\).","\([A,[B, C]] + [B,[A, C]] + [C,[A, B]] = 0\).","\([A, B + C] = [A, B] + [A, C]\).","\([A, B] = -[B, A]\).",B
+"已知f(x ,y)=x3+y3-12x-3y，則相對極大值發生在哪一點？","( 2 , 1 )","( -2 , 1 )","( 2 , -1 )","( -2 , -1 )",D
+求 \( f(x) = 3^x \) 在 \( x = 0 \) 的泰勒級數為何？,\( \sum_{n=0}^{\infty} \frac{1}{n!} x^{3n} \),\( \sum_{n=0}^{\infty} \frac{(\ln 3)^n}{n!} x^n \),\( \sum_{n=0}^{\infty} \frac{1}{n!} (3x)^n \),\( \sum_{n=0}^{\infty} \frac{\ln 3}{n!} x^n \),B
+下列函數何者可以執行線性轉換？,"T ( x, y, w ) =< 4 y - 2 x, y + 3 x, 0, 0 >","T ( x, y, u, v, w ) =< u - v - w, w + u, z, 0,1 >","T ( x, y ) =< x - y,sin ( x - y ) >","T ( x, y ) =< x - y, x + y, 2 xy, 2 y, x - 2 y >",A
+\( \frac{d}{dx} \int_{0}^{x^2} \sqrt{1+t^{110}} dt = ? \),2x√(1+x^110),√(1+x^220),√(1+x^110),2x√(1+x^220),D
+求極限 \( \lim_{x \to 0^+} \frac{e^{-\frac{1}{x}}}{x} = ? \),2,0,4,-1,B
+由曲線 y= x2 與直線 y =x + 2 所圍封閉區域之面積為何？,7/2,5/2,11/2,9/2,D
+"一平行六面體(parallelepiped)的三個不互相平行的邊緣向量分別是[2, 0, 3]、[0, 4, 1]、[5, 6, 0]，試 求此一平行六面體的體積。",72,12,36,144,A
+下列的複數函數中，何者是解析函數（Analyticfunction）？,"f ( x, y ) = x^2 + y^2 - 2 y + i(2 xy - 2 x)","f ( x, y ) = x^2 - y^2 - 2 y + i(2 xy + 2 x)","f(x,y)=x2-iy 2","f ( x, y) = x - iy",B

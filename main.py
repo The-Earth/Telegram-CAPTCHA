@@ -7,7 +7,7 @@ from collections import defaultdict
 import catbot
 from catbot.util import html_escape, partly_hide_name
 
-from challenge import Challenge, TextReadingChallenge, MathChallenge
+from challenge import Challenge, WikisourceChallenge, MathChallenge, TMMLUChallenge
 from anti_flood import AntiFlood
 from timeout import Timeout
 
@@ -167,9 +167,10 @@ def new_member(msg: catbot.ChatMemberUpdate):
     else:
         template = bot.config['messages'][language]['text_reading_challenge']
         user_agent = bot.config['user_agent']
-        # Randomly challenge user with a math or text reading problem
-        problem: Challenge = TextReadingChallenge(template, language, user_agent)
+        tmmlu_path = bot.config['tmmlu_path']
+        # problem: Challenge = WikisourceChallenge(template, language, user_agent)
         # problem: Challenge = MathChallenge()
+        problem: Challenge = TMMLUChallenge(template, language, tmmlu_path)
         button_list: list[list[catbot.InlineKeyboardButton]] = []
         answer_list: list[catbot.InlineKeyboardButton] = []
         for i in range(6):

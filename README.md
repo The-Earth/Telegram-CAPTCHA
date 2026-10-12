@@ -7,6 +7,9 @@ A Telegram CAPTCHA bot for group entry. It is derived from [fossifer's design](h
 ```bash
 git clone https://github.com/The-Earth/Telegram-CAPTCHA
 cd Telegram-CAPTCHA
+# use uv
+uv sync
+# or use pip
 pip install -r requirements.txt
 cp config_example.json config.json
 ```

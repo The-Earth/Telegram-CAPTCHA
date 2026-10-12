@@ -1,0 +1,6 @@
+question,A,B,C,D,answer
+"已知 \( f(x) = x + \frac{a}{x-1} \), \( (a > 0) \)之相對極小值為 \( 3 \), 則 \( a \) 為？",2,4,3,1,D
+讓 \( F(\mathbb{R}) \) 表示所有從 R 到 R 的函數的集合。選擇下列不是 \( F(\mathbb{R}) \) 的子集合，它們是線性獨立的。,"\(\{t^2 - 2t + 5, 2t^2 - 5t + 10, t^2\}\)","\(\{e^t, e^{2t}, ..., e^{nt}, ...\}\)","\(\{t, t \sin t\}\)","\(\{\sin t, \sin^2 t, \cos^2 t, 1\}\)",D
+"求線段 \( y = x \), \( 0 \leq x \leq 1 \) 線 x 軸旋轉所成圓的表面積？",\( \sqrt{2\pi} \),\( 2\sqrt{2\pi} \),\( \frac{3\sqrt{2\pi}}{2} \),\( \frac{\sqrt{2\pi}}{2} \),A
+"設 \(\bm{A}\) 是 \(m \times n\) 矩陣，\(\bm{A}^{\mathrm{T}}\) 是 \(\bm{A}\) 的轉置，若 \(\bm{\eta}_1, \bm{\eta}_2, \cdots, \bm{\eta}_t\) 是齊次方程組 \(\bm{A}^{\mathrm{T}}\bm{x}=\bm{0}\) 的基礎解系，則秩 \(r(\bm{A})=\)",\(m-t\);,\(n-m\).,\(t\);,\(n-t\);,A
+\( \lim_{x \to 11} \frac{\sqrt{x} - \sqrt{11}}{x^2 - 121} = ? \),\( \frac{1}{11\sqrt{11}} \),\( \frac{1}{22\sqrt{11}} \),不存在,\( \frac{1}{44\sqrt{11}} \),D

@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 import random
 import re
+import os
+from pathlib import Path
 
 from catbot.util import html_escape
 import mwclient
@@ -80,10 +82,11 @@ class MathChallenge(Challenge):
 
 
 class TextReadingChallenge(Challenge):
-    def __init__(self, qus_template: str, language: str, user_agent: str = 'TextReadingChallenger/1.0'):
+    def __init__(self, qus_template: str, language: str):
         """
         :param qus_template: Template message for question. Use string prepared for str.format() method.
                              Required arguments are {text} and {index}
+        :param language: ISO language code
         """
         self._text = ''
         self.ans_index = 0
@@ -91,26 +94,11 @@ class TextReadingChallenge(Challenge):
         self._ans = ''
         self._choices: list[str] = []
         self._language = language
-        self.site = mwclient.Site('zh.wikisource.org', clients_useragent=user_agent)
         self.new()
 
     def new(self):
-        while True:     # Get new random article if the current one has too few han chars
-            random_title = next(self.site.random(0, api_chunk_size=1))['title']
-            api_payload = {
-                "format": "json",
-                "prop": "extracts",
-                "titles": random_title,
-                "utf8": 1,
-                "formatversion": "2",
-                "exintro": 1,
-                "explaintext": 1
-            }
-            challenge_text = self.site.api('query', **api_payload)['query']['pages'][0]['extract'][:50]
-            challenge_text = re.sub(r'\s', '', challenge_text)    # remove whitespace characters
-            han = re.sub(r'[^\u4e00-\u9fff]', '', challenge_text)    # remove non han characters
-            if len(han) > 10:
-                break
+        challenge_text = self.random_text()
+        han = TextReadingChallenge.extract_han(challenge_text)
 
         self.ans_index = random.randint(1, 10)
         self._ans = han[self.ans_index - 1]
@@ -134,6 +122,18 @@ class TextReadingChallenge(Challenge):
             index=TextReadingChallenge.ordinal(self.ans_index, self._language)
         )
 
+    @abstractmethod
+    def random_text(self):
+        """
+        Implement a random text generator and this class does all other jobs.
+        :return:
+        """
+        pass
+
+    @staticmethod
+    def extract_han(text) -> str:
+        return re.sub(r'[^\u4e00-\u9fff]', '', text)    # remove non han characters
+
     @staticmethod
     def ordinal(number: int, language: str) -> str:
         if language.startswith('zh'):
@@ -144,3 +144,60 @@ class TextReadingChallenge(Challenge):
         else:
             humanize.activate(language)
             return humanize.ordinal(number)
+
+
+class WikisourceChallenge(TextReadingChallenge):
+    def __init__(self, qus_template: str, language: str, user_agent: str = 'WikisourceChallenge/1.0'):
+        """
+        :param qus_template: Template message for question. Use string prepared for str.format() method.
+                             Required arguments are {text} and {index}
+        """
+        super().__init__(qus_template, language)
+        self.site = mwclient.Site('zh.wikisource.org', clients_useragent=user_agent)
+
+    def random_text(self) -> str:
+        while True:     # Get new random article if the current one has too few han chars
+            random_title = next(self.site.random(0, api_chunk_size=1))['title']
+            api_payload = {
+                "format": "json",
+                "prop": "extracts",
+                "titles": random_title,
+                "utf8": 1,
+                "formatversion": "2",
+                "exintro": 1,
+                "explaintext": 1
+            }
+            challenge_text = self.site.api('query', **api_payload)['query']['pages'][0]['extract'][:50]
+            challenge_text = re.sub(r'\s', '', challenge_text)    # remove whitespace characters
+            han = TextReadingChallenge.extract_han(challenge_text)
+            if len(han) > 10:
+                break
+
+        return challenge_text
+
+
+class TMMLUChallenge(TextReadingChallenge):
+    def __init__(self, qus_template: str, language: str, dataset_path):
+        self.dataset_path = Path(dataset_path)
+        self.all_paths = [self.dataset_path / x for x in os.listdir(self.dataset_path) if x.endswith('.csv')]
+        super().__init__(qus_template, language)
+
+    def random_text(self):
+        for c1 in range(10):
+            while True:
+                file_path = random.choice(self.all_paths)
+                lines = list(open(file_path, 'r', encoding='utf-8'))
+                if len(lines) >= 2:
+                    break
+
+            valid_text = ''.join(lines[1:])
+            if len(valid_text) <= 30:
+                continue
+
+            start_index = random.randint(0, len(valid_text) - 30)
+            final_text = valid_text[start_index:start_index + 30]
+            han = TextReadingChallenge.extract_han(final_text)
+
+            if len(han) > 10:
+                return final_text
+        return ''

@@ -1,0 +1,21 @@
+question,A,B,C,D,answer
+"假設矩陣
+
+\[ \begin{bmatrix} 1 & 2 & 3 & 1 & b \\ 2 & 5 & 3 & a & 0 \\ 1 & 0 & 8 & 6 & c \end{bmatrix} \]
+
+可以被轉換成簡化行階梯形式
+
+\[ \begin{bmatrix} 1 & 0 & 0 & -2 & 0 \\ 0 & 1 & 0 & d & -1 \\ 0 & 0 & 1 & 1 & e \end{bmatrix} \]
+
+以下哪些等式是正確的？",\( a = 1 \),\( d = -1 \),\( b = 3 \),\( e = 2 \),C
+\( \lim_{x \to \infty} (\sqrt{x^2 + 11x} - x) = ? \),\( 37 \),\( \frac{111}{5} \),\( \frac{11}{2} \),\( \frac{111}{4} \),C
+"如果 \( u \) 和 \( v \) 正交，則 \( u \cdot v = 0 \)。\( S^\perp \) 是 \( \mathbb{R}^n \) 中所有與 \( S \) 中每個向量都正交的向量集合。考慮集合
+\( S = \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \in \mathbb{R}^3 : x_1 - x_2 + x_3 = 0 \right\} \)。選擇以下正確的陳述。",\( S \) 是 \( \mathbb{R}^3 \) 的一個子空間且 \( \text{dim}S = 1 \),\( \begin{bmatrix} 1 \\ -1 \\ 1 \end{bmatrix} \in S \),設 \( \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} = w + z \) 使得 \( w \in S \) 並且 \( z \in S^\perp \)，則 \( z = \begin{bmatrix} 1/3 \\ -1/3 \\ 1/3 \end{bmatrix} \)。,\( \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} \in S^\perp \),C
+"\( f(x) = \left\{
+\begin{array}{ll}
+\frac{x^4 - 1}{x^2 - 1}, & x \neq \pm1 \\
+a, & x = 1 \\
+b, & x = -1
+\end{array}
+\right. \)，若 \( f(x) \) 在 \( x=\pm1 \) 處連續，則 \( \frac{a}{b} \) 的值為何？",2,4,3,1,D
+"行使得 \( A = \begin{bmatrix} 1 & -3 & 4 & -2 & 5 \\ 2 & -6 & 9 & -1 & 8 \\ 2 & -6 & 9 & -1 & 9 \\ -1 & 3 & -4 & 2 & -5 \end{bmatrix} \), 則下列選項中何者為矩陣 A 的秩 (rank)？",1,2,3,4,C

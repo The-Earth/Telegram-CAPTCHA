@@ -1,0 +1,169 @@
+question,A,B,C,D,answer
+CIDR(Classless Inter-Domain Routing)是一種 IP 地址分配方法，下列敘述何者有誤？,CIDR 標記 192.168.1.1 / 25 的子網路遮罩是 255.255.255.192,CIDR 標記 172.16.0.0 / 12 是 IPv4 Class B 的私有 IP 範圍,CIDR 可提高網際網路上的資料路由效率,CIDR 可減少 IP 位址浪費,A
+"有關 OSI 模型(Open System Interconnection Model)中傳輸層之協議數據單元(Protocol Data Unit, PDU)，下列何者正確？",Packet,Segment,Bit,Frame,B
+有一電腦系統支援虛擬記憶體（Virtual Memory）管理，此虛擬記憶體系統之平均分頁錯誤（Page Fault）處理時間為 8 毫秒（ms），記憶體存取時間為 120 奈秒（ns），吾人若希望虛擬記憶體的有效記憶體存取時間（Effective Memory-Access Time）不大於 130 奈秒，試算其分頁錯誤比率（Page Fault Rate）約不能高於多少，若以頻率形式表示，相當於必須約高於每多少次記憶體存取才會發生一次分頁錯誤？（下列何者最接近最小值）,約 80 萬次,約 90 萬次,約 100 萬次,約 70 萬次,A
+在 UNIX 或 Linux 系統中，假設目前工作目錄是/usr/include/xorg，執行指令 cd .././..之後，工作目錄會變成下列何者？,/usr/include/xorg,/usr/include,/,/usr,D
+在 UNIX 的作業系統環境中，當一個程序（process）執行 fork()此項系統呼叫並且成功完成該系統呼叫後，下列敘述何者正確？,父程序（parent process）中 fork()的回傳值為 0,子程序與父程序中 fork()的回傳值為一個相同的負整數,子程序與父程序中 fork()的回傳值為一個相同的正整數,子程序（child process）中 fork()的回傳值為 0,D
+某實數（Real Number）用十進制表示（Decimal Representation）為 23.75。 若該數改用二進制表示（Binary Representation），結果是下列何者？,10101.11,10011.01,10111.11,11011.01,C
+有關 TCP 協定之流量控制(Flow Control)功能之敘述，下列何者正確？,避免流量超過交換器轉址的能力,避免流量超過路由器轉送的能力,避免流量超過接收端接收的能力,避免流量超過發送端傳送的能力,C
+在 SQL 語言中，使用者下了「DELETE FROM customers WHERE Name='王二';」這個指令，請問這個指令是下列哪一種語言？,Data Definition 資料定義語言(DDL),Data Control 資料控制語言(DCL),Data Queries 資料查詢語言(DQL),Data Manipulation 資料操作語言(DML),D
+關於 Word 中，何者是目前無法支援檔案格式的副檔名？,docx,xml,odt,wmv,D
+某一浮點數用 IEEE 754 表示法，符號位元（sign bit）為 0，偏移指數（biased exponent）的值為 10，小數部分（mantissa）所有的位元均為 1。若將偏移指數的值改變為 12，則此浮點數變成原來的多少倍？,4,1.2,100,2,A
+物件導向資料結構藉由物件共同之特徵，可敘述結構複雜的資料。下列何者不是此類型資料庫的基本組成？,方法(method),類別(class),指標(pointer),物件(object),C
+國際標準組織所提出的開放式系統互聯模型（OSI 模型）中，下列何者是負責建立與終止通訊連線的層級？,傳輸層（Transport Layer）,會議層（Session Layer）,應用層（Application Layer）,展示層（Presentation Layer）,B
+假設有一個邏輯推論系統，black(x)代表 x 是黑色的，dog(x)代表 x 是一隻狗，A→B 代表若 A 則 B，(Vx)(y) 代表所有的 x 都具有 y 的特性。根據下列敍述，可以得到什麼邏輯推論：(Vx)(dog(x)→black(x)),所有動物中黑色的都是狗,所有的狗都是黑色的,所有黑色的都是狗,所有動物中的狗都是黑色的,B
+下列何者是屬於社交工程的攻擊手段，攻擊者利用人類的疏忽或害怕的心理，在網路世界裡偽裝成你所信任的人或組織，以欺騙的手法騙取你的機密隱私資料？,釣魚(Phishing)攻擊,"跨站腳本(Cross-Site Scripting,XSS)攻擊",阻斷服務攻擊,篡改攻擊,A
+如果想透過雲端計算（Cloud Computing）建置一個生物資訊資料庫給網際網路上的研究人員使用，使用的是屬於雲端計算中的那一類服務？,軟體即服務 Software as a Service（SaaS）,平台即服務 Platform as a Service（PaaS）,測試即服務 Test as a Service（TaaS）,基礎設施即服務 Infrastructure as a Service（IaaS）,B
+根據 NIST(National Institute of Standards and Technology) SP1500-1，通常會使用下列哪種資料庫處理大數據？,關聯式資料庫,結構式資料庫,網狀式資料庫,非關聯式資料庫,D
+在統一塑模語言（Unified Modeling Language）中，下列圖型中何者著重於敘述物件間的訊息傳遞與順序？,類別圖（Class Diagram）,物件圖（Object Diagram）,循序圖（Sequence Diagram）,署圖（Deployment Diagram）,C
+有關排序演算法，下列何者在最差情況下的時間複雜度相對最佳？,選擇排序,快速排序,合併排序,插入排序,C
+256 階的灰階（gray-level）影像的每一個像素（pixels）可以表示灰階值的範圍從 0 到 255，此影像的每一個像素是由幾個位元表示？,8,128,256,16,A
+下列何種排程（scheduling）演算法不會發生飢餓（starvation）的情形？,shortest-remaining-time-first,round-robin,shortest-job-first,priority,B
+發掘程式中指令階層平行性（instruction-level parallelism）有助於提升程式執行效能，其可由硬體或是軟體的機制來達成。下列何者需要依賴純軟體的方式，以發掘指令階層平行性進而提升程式效能？,動態管道排程（dynamic pipeline scheduling）,亂序執行（out-of-order execution）,超純量（superscalar）架構,"很長指令字（Very Long Instruction Word, VLIW）架構",D
+在單一處理器中執行一個程式，其執行時間 25 %是循序的，75 %可用多核心平行處理，若欲以多個同樣的處理器加速執行，將總執行時間減至原本的一半，依據阿姆達爾定律(Amdahl's Law) 至少需要使用多少個處理器？,3,5,4,2,A
+演算法常用時間複雜度 Big-O 來表示演算法的優劣，下列 Big-O 由小到大排列為何？ A. n! B. 2n C. n2 D. nlog(n),"D, C, A, B","D, C, B, A","D, B, C, A","C, D, A, B",B
+有關雜湊(Hash)函數之敘述，下列何者有誤？,可以解密,固定長度,正常情況下雜湊結果為唯一值,常用於驗證資料的完整性,A
+CPU 當中的旗標暫存器（Flag Register）內容是用來記錄：,程式指令執行位址的指標,中斷向量位址,指令運算的結果,指令執行後的狀態,D
+在 MS SQL SERVER 中，有關檢視表(View)之敘述，下列何者錯誤？,檢視表中可以存資料,檢視表的下一層可以是由資料表或檢視表所形成,檢視表是虛擬資料表,檢視表是藉由 SQL SELECT 查詢動態組合生成的資料表,A
+阿華在設計一個程式，需要一種資料結構，可以一邊新增資料，一邊取出資料，且每次取出的資料都是現有資料中的最大值。您建議阿華使用下列何種資料結構？,Queue,Array,Linked List,Heap,D
+ZigBee 與 Bluetooth 皆屬近距離的無線網路技術，下列敘述何者正確？,兩者都是基於 IEEE 802.15.4 標準,ZigBee 的功耗較 Bluetooth低,ZigBee 的成本較 Bluetooth高,ZigBee 的傳輸速率較 Bluetooth快,B
+有關 FTP 傳輸時使用 2 個連接埠來建立連線通道之敘述，下列何者正確？,資料連線用 TCP 連接埠 20,控制連線用 UDP 連接埠 20,控制連線用 TCP 連接埠 20,資料連線用 UDP 連接埠 20,A
+下列何者非針對 OSI 模型(Open System Interconnection Model)中應用層的攻擊手法？,HTTP Flood,SQL Injection,DNS Cache Poisoning,SYN Flood,D
+對於一個使用區段記憶體管理（segmentation memory management）的系統，下列敘述何者正確？,記憶體將以一個分頁（page）作為最小的配置單位,同一個程序中的不同區段，大小皆相同,一個程序需要一個分頁表（page table）來記錄每個區段所在的位置,將有可能產生外部碎片（external fragmentation）,D
+使用者可用多種裝置去同步讀取與處理在遠端的電子郵件，該電子郵件伺服器的通訊協定為何？,POP3,ICMP,IMAP,SMTP,C
+假設作業系統採用循環排程（round-robin scheduling）的方式來排程三個工作，這三個工作其執行時間依序為 10 ms、15 ms、40 ms，若循環排程每次執行工作所使用的時間量（time quantum）為 10 ms，則這三個工作的平均等待時間（average waiting time）為何？,17 ms,16 ms,18 ms,15 ms,D
+欲儲存 RGB 全彩影像中的一個像素，需幾個位元？,24,32,8,16,A
+"下列 C 語言程式執行的結果為何？ int num = 75; printf(""%d, "", (num > 70 && num < 80)); printf(""%d, "", (num > 80 || num < 75)); printf(""%d, "", !(num > 80 || num < 75));","1, 0, 0","0, 1, 0","1, 0, 1","1, 1, 2000",C
+針對雲端運算的敘述，下列何者錯誤？,可依照實際使用量付費,可提升服務的可用性及可擴充性,可降低對網路的頻寬需求,可降低服務提供者的管理成本,C
+若邏輯運算式 X= (1010 AND 1101) XOR 1010，則 X=？,10,11,1011,1010,A
+下列何者能提供較高的 I/O 傳輸速率？,直接記憶體存取 I/O（direct memory access I/O）,程式控制 I/O（program-controlled I/O）,記憶體映射 I/O（memory mapping I/O）,中斷驅動 I/O（interrupt-driven I/O）,A
+小明的爺爺有老花眼，他要將螢幕調整為下列哪一種解析度可以看到最大的文字？,800x600,1920x1080,1280x960,640x480,D
+程式的執行時間中有一部分稱為中央處理器執行時間（CPU execution time）。下列何者與中央處理器執行時間無關？,快取錯失率（Cache Miss Rate）,每個指令時脈數（Clock Cycles Per Instruction）,程式中的指令數（Instruction Count）,時脈速率（Clock Rate）,A
+針對一個具有 n 個節點的二元搜尋樹（binary search tree），下列敍述何者錯誤？,在最差狀況下搜尋一個數值的時間複雜度為 θ(n),在最佳狀況下刪除一個數值的時間複雜度為 θ(n),在最差狀況下新增一個數值的時間複雜度為 θ(n),由根節點（root）開始，以中序（inorder）方式走訪此二元搜尋樹的時間複雜度為 θ(n),B
+"最短剩餘時間優先（Shortest Remaining Time First, SRTF）排程法是作業系統中一種安排程序執行順序的方法。假設有 5 個程序 P1、P2、P3、P4、P5，分別於時間 0、1、1、2、3 到達工作佇列，其所需的 CPU 執行時間（CPU Burst Time）分別為 4、2、1、2、1，若以 SRTF 法排程，這 5 個程序的等待時間總和為何？",10,13,12,11,D
+八進制（octal）的整數 105，轉換成十六進制（hexadecimal）等於多少？,43,44,45,46,C
+下列布林表示式（Boolean expressions），何者錯誤？,X'⊕Y=X⊕Y',若 XY=0，則 X⊕Y=X'+Y,Y⊕1=Y',(X'⊕Y)'=(X⊕Y')',B
+可變長度編碼（run-length encoding）為常見影像壓縮之方法，可變長度編碼主要的壓縮方式為何？,用固定長度碼取代連續重複出現資料,計算各個符號出現的機率,將影像不重要部分去除，保留重要資訊,對隨機長度資料進行編碼,A
+下列何者為 C++語言的內建指標，它將自動被傳遞給類別中所有非靜態函數?,this,new,sub,super,A
+在區塊鏈中的交易記錄是記錄在下列何處？,傳輸帳本,公共帳本,國有帳本,私密帳本,B
+一般而言，伺服器的作業系統應屬於下列哪一種類型？,多人多工,多人單工,單人多工,單人單工,A
+下列何者不屬於雲端運算技術的優點？,高擴展性,高存取性,服務可計量,高隱密性,D
+下列何者不是電子郵件應用層協定？,TCP,POP3,SMTP,IMAP,A
+檢測系統安全與否一般會採用弱點掃描(簡稱弱掃)和滲透測試(簡稱滲透)，有關兩者差異比較之敘述，下列何者有誤？,執行弱掃之時機通常較滲透頻繁,弱掃較滲透更能發現未知漏洞,執行弱掃之成本通常較滲透低,弱掃採自動化工具，滲透採人工檢測,B
+關於異地備援策略和機制，下列何者所需的設備成本最低?,mirrored site,warm site,cold site,hot site,C
+使用選擇排序法（Selection Sort）對資料串列 “7 5 4 6” 進行遞增排序，第一個回合後的結果是：,4 5 7 6,6 5 4 7,7 5 4 6,5 4 7 6,A
+若佇列（Queue）的內容組態是：a、b、c、d（a 在前端、d 在尾端）。依序對佇列做插入（Enqueue）、取出（Dequeue）：Dequeue => Dequeue => Enqueue(e)=> Enqueue(f)。則佇列的最後組態為何？,f、e、c、d（f 在前端、d 在尾端）,a、b、e、f（a 在前端、f 在尾端）,c、d、e、f（c 在前端、f 在尾端）,e、f、c、d（e 在前端、d 在尾端）,C
+目前的電腦作業系統中大部份個人電腦所管理的記憶體空間大小，是下列哪一種等級？,MB,GB,PB,TB,B
+Windows 作業系統中哪個程式提供目前電腦執行中的應用程式、行程、CPU 和記憶體以及網路統計的資訊？,事件檢視器,電腦管理員,工作管理員,裝置管理員,C
+現有資料碼 1010111 及 0011001，若採用奇同位元(Odd Parity)檢查，其同位元值分別為何？,1及1,1及0,0及0,0及1,C
+"有關入侵偵測系統(Intrusion-Detection System, IDS)之敘述，下列何者有誤？",異常行為偵測需先定義正常行為,具有主動防禦的能力,可監控網絡或系統中的異常或可疑行為,網路型 IDS 可安裝於任何地方，屬獨立系統,B
+廣義上，關於網路傳輸相關技術的網路服務，何者涵蓋距離與範圍最大？,5G 服務,Wi-Fi 服務,Star Link 服務,Bluetooth 服務,C
+下列關於 MP3 音訊壓縮技術的敘述，何者錯誤？,提供不同的編碼位元率（bit rates）,若使用較低位元率進行編碼，則聲音回放（playback）的品質較高,是種失真的壓縮方式,是當今常見的數位音訊編碼技術,B
+於 Windows 作業系統中，可設定程序(process)之優先序包括：“A（標準以上）、B（標準以下）、H（高）、L（低）、N（標準）、R（即時）”，下列排序何者正確？,R→H→A→N→B→L,R→A→H→B→N→L,R→A→H→N→B→L,R→H→A→B→N→L,A
+在自然語言處理中，要能了解一句話中的代名詞所指的是什麼，必須對語句分析到下列那一種層次？,語意分析（semantic analysis）,前後文分析（contextual analysis）,語法分析（syntactic analysis）,假說分析（hypothesis analysis）,B
+為讓作業系統可以在虛擬記憶體（virtual memory）中實作出保護機制，硬體必須要提供三項基本能力，其中不包含下列何者？,讓使用者程序可以讀取但不能寫入部分的處理器狀態,處理器支援線性模式（linear mode）及邏輯模式（logic mode）,處理器至少支援兩種模式，分別為使用者模式及作業系統模式,讓處理器可以於不同模式間切換,B
+在多重字母替換加密法(polyalphabetic ciphers)中，定義「金鑰」為每個字母的位移數，例如123 是指第一個字母向左移一位；第二字母向左移二位；第三字母向左移三位。請問 CAB會被加密為何？,BYY,BYZ,BZZ,DCE,A
+若有 n 個數字欲進行排序，下列關於任何一種基於比較的排序演算法所需要的最少比較次數複雜度的敘述，何者正確？,Ω(n log n),Ω(n3),Ω(n2 log n),Ω(n2),A
+於網際網路協定中，下列何者非屬於“路由”(routing)協定？,RIP (routing information protocol),OSPF (open shortest path first),POP (post office protocol),BGP (border gateway protocol),C
+下列關於數位隱藏式浮水印（invisible digital watermark）的敘述，何者錯誤？,浮水印的資訊不應因受到外界攻擊而消失,目的是希望可以保護版權，避免圖片未經授權遭到濫用,人眼可看出圖片中所加入的浮水印,方法是透過更改影像中的資料來嵌入浮水印,C
+資訊安全的基本功能及目的不外在提供資料和資源安全性機制，下列何者不是資訊安全所應提供的基本服務？,Availability（可用性）,Confidentiality（機密性）,Generalized（一般性）,Integrity（完整性）,C
+若一個以列為主（Row-Major），8 列（Row）4 行（Column）的二維陣列 A，每個陣列元素占用一個記憶體位址空間，已知 A[6][3]的記憶體位址為 1022，則 A[1][1] 的記憶體位址為何？,1000,1003,1002,1001,A
+設計 4-to-1 多工器（Multiplexer）時，需要幾個位元的選擇輸入訊號？,1,2,4,3,B
+下列分數何者無法以二進制精確表示(或存入電腦會有誤差)？,13 / 32,5 / 12,7 / 16,3 / 24,B
+假設 C++ 程式中已宣告整數變數 score、指標變數 scorePtr。下列那個敘述會將變數 score 的記憶體位址（Memory Address）指定給 scorePtr？,scorePtr = *score;,*scorePtr = score;,&scorePtr = score;,scorePtr = &score;,D
+下列 7 項中有幾項非屬程序控制區塊 PCB(Process Control Block)組成內容？ ○1 CPU Register ○2 Memory Management Information ○3 Programming Counter ○4 Bit Map ○5 Process State ○6 CPU Scheduling Information ○7 I/O Device Queue,3,4,1,2,D
+有關邏輯運算式，下列何者有誤？,X + XY = X,Y • 0 = 0,Y + 1 = Y,X • X = X,C
+若一棵完滿二元樹（Full Binary Tree）有 N 個葉節點（Leaf Node），則該二元樹有多少個非葉節點（Non-leaf Node）？,N+1,N,2N-1,N-1,D
+考慮組織需求，根據 Leavitte 的鑽石模型，資訊系統開發必須考量的四大構面，下列何者不屬於此模型所指的四大構面之一？,Task,Technology,Language,People,C
+下列那一項機制不是 UNIX 作業系統，用來同步多執行緒（multiple threads）的方法？,使用管道（pipes）的機制,使用不可分割的讀取並設定指令（atomic test-and-set operations）,使用旗號（semaphores）,使用等待事件（wait event）和觸發事件（signal event）的系統呼叫,A
+"若有一個語言文字體系，需要區分 2,000 個基本字詞（words），至少要用幾個位元（binary bits）表現一個字詞？",16 bits,11 bits,10 bits,8 bits,B
+有關資料庫正規化(Normalization)之敘述，下列何者正確？ ①正規化的程度越高，資料的重複性會降低 ②正規化的程度越高，資料存取效能亦會越高 ③ 正規化的程度越高，資料表格的數量亦會增多④正規化程序可避免更新異常,②③④,①②③,①③④,①②④,C
+有關網路管理指令，下列何者錯誤？,使用 tracert 解決硬體位址問題,使用 ipconfig /all 檢視配置,使用 netstat 顯示連接統計,使用 Ping 測試連接,A
+有關人工智慧之敘述，下列何者有誤？,在訓練樣本不足時，增加模型的複雜度仍舊可能得到更高的訓練準確度,主成分分析是一種降維手段，需要標籤信息進行運算,LISP 為早期人工智慧專案常使用的程式語言,循環神經網路常會出現梯度消失或梯度爆炸的現象，是因為參數與層數較多,B
+下列哪個行程排程演算法有最小的平均等待時間？,優先權排班法,輪流法,先到先處理法,最短優先法,D
+針對電子郵件社交工程的攻擊，下列何項應變措施較為適當？,請資訊部門同仁協助安裝防毒軟體,將個人電子郵件位址從公司網頁移除,請資訊警察來協助追蹤發信來源,提高警覺，不隨意點擊電子郵件,D
+陣列（Array）Cars[50]的每個元素占用 2 個位元組（bytes）。若陣列 Cars 之起始元素 Cars[0]在記憶體中的位址（Address）為 1200，則元素 Cars[20] 的位址為何？,1240,1219,1238,1220,A
+如果您採取手動設定方式想讓個人電腦能經由區域網路正確連上網際網路，除了 IP 位址外，下列何者非屬必要設定？,預設閘道器,名稱伺服器,防火牆,子網路遮罩,C
+若在某單程式作業系統（Mono-programming Operation System）執行程式，平均使用 CPU 的時間是 20 微秒（Microseconds）、使用 I/O 設備的時間是 60 微秒。則該系統 CPU 空閒的時間百分比是多少？,20%,75%,60%,45%,B
+有關 IPv4 的表頭欄位值，下列何者會隨著路由器的轉送而變動？,存活時間(TTL),標頭檢驗值(HC),標頭長度(IHL),封包總長(TL),A
+下列敘述何者錯誤？,在星狀拓樸（Star Topology）當任一連線損壞或故障將癱瘓所有傳輸,在環狀拓樸（Ring Topology）網路上的電腦彼此通訊不必透過一台主電腦,網狀拓樸（Mesh Topology）的每一台電腦至少連結網路中一個以上的電腦,匯流排拓樸（Bus Topology）是由一條主纜線串接所有的電腦或其他設備,A
+IP 位址為 200.19.100.5 之電腦要送封包給同一網路中所有電腦，則封包之目的地位址應為下列何者？,200.19.100.0,255.255.255.255,0.0.0.0,0.0.0.255,B
+關於色彩模型的敘述，下列何者錯誤？,在 RGB 色彩表示法中，需要 32 bits 來表達色彩,"在 RGB 色彩表示法中，（255,255,255）為白色",利用 RGB 三原色光來混合其他色光的方法稱為加法混色（additive color mixing）,在 HSB 色彩模型中，H 表示色相（Hue），S 表示飽和度（Saturation），B 表示亮度（Brightness）,A
+企業可建立下列哪種資訊系統掌握客戶，尤其是主要客戶？,CRM,TPS,SCM,KWS,A
+下列那項技術可以為資料提供驗證性、完整性和不可否認性的安全特性？,資料壓縮,金鑰交換,數位簽章,加密/解密,C
+有關虛擬實境，下列敘述何者正確？,可見如同真實的虛擬世界,結合現場與虛擬物件,用電腦螢幕跟攝影機呈現預期的髮型設計狀況,虛擬物件可在真實空間中與使用者進行互動,A
+"若布林函數 F ( A, B, C ) = AB + A'C ，以正規最小項和（Canonical Sum of Minterms）表示時，其結果為：","Σm(2, 3, 5, 6)","Σm(0, 1, 6, 7)","Σm(1, 3, 6, 7)","Σm(1, 2, 5, 6)",C
+T2 專線傳輸速率最接近下列何者?,2 個 T1,4 個 T1,2048 GBps,2048 Mbps,B
+在 32 位元單精確度 IEEE 754 浮點數表示法中，第一個位元是符號位元；之後是 8 個位元的指數部分，以偏移表示法（Biased Notation）呈現欄位中的數值，且偏移值是 127；最後的 23 位元代表小數部分。以該標準格式表示 10 進位的-18.625 結果為何？,1000 0010 0001 0101 0000 0000 0000 0000,1100 0001 1001 0101 0000 0000 0000 0000,1000 0010 0100 1010 1000 0000 0000 0000,1100 0001 1100 1010 1000 0000 0000 0000,B
+下列那種排序演算法，無法在原輸入資料的陣列上（in-place）進行排序，需要額外的暫存記憶體空間？,Insertion Sort,Merge Sort,Bubble Sort,Selection Sort,B
+電腦的組成元件歷經四個重要階段，下列的發展順序（由先至後）何者正確？,電晶體、真空管、超大型積體電路、積體電路,真空管、電晶體、超大型積體電路、積體電路,真空管、電晶體、積體電路、超大型積體電路,真空管、超大型積體電路、積體電路、電晶體,C
+管線（Pipeline）計算中的數據風險（Data Hazard）可藉由指令碼排程（Code Scheduling）來避免管線停頓（Pipeline Stall）的發生，其中指令碼排程是由下列那個系統程式負責？,載入器（Loader）,作業系統（Operating System）,鏈接器（Linker）,編譯器（Compiler）,D
+當一個行程（Process）需要從鍵盤讀取資料時，該行程會進入什麼狀態（Status）？,等待狀態（Waiting State）,執行狀態（Running State）,保留狀態（Hold State）,預備狀態（Ready State）,A
+計算機有許多不同的數碼系統來編輯數字，若以 84-2-1（84 負 2 負 1）碼來表示十進制數 58 時，答案為何？,10111000,1011010,10111010,1011000,A
+有關資料儲存單位的大小排列，下列何者正確？,TB ＞ EB ＞ PB ＞ ZB,ZB ＞ EB ＞ PB ＞ TB,ZB ＞ TB ＞ PB ＞ EB,PB ＞ EB ＞ ZB ＞ TB,B
+動態記憶體配置（dynamic memory allocation）的演算法有很多種，如果系統不對可用記憶區塊的鏈接串列（linked list）依區塊大小進行排序，那麼採用下列那一種演算法可以讓系統花在記憶區塊分配（memory allocation）的時間較少？,最先適合（first-fit）,隨機適合（random-fit）,最差適合（worst-fit）,最佳適合（best-fit）,A
+下列何者不是物聯網技術運作的關鍵要素？,智慧積體電路,無線網路,有線網路,感測器,C
+有關陣列（Array）結構，下列敘述何者錯誤？,可用以實現堆疊（Stack）結構,陣列的元素可以循序存取（Sequential Access）,是適於儲存相似型態物件的一種結構,陣列的元素無法隨機存取（Random Access）,D
+"下列 C 程式執行的結果為何？ char ch; int x; ch='F'; x=ch-'B'; printf(""%d"", x);",F,B,4,5,C
+下列何種排序法在被排序的數字中有相同之數值時，他們在排序後相對位置保持與排序前相同？,selection sort,quick sort,heap sort,bubble sort,D
+有關 Distance Vector(簡稱DV)與 Link State(簡稱LS)路由演算法兩者差異之敘述，下列何者有誤？,DV 定期更新路由資訊，但 LS 則否,LS 之路由資訊收斂較 DV 快,DV 運行較 LS 需更大頻寬,RIPv2 路由協定採取 DV，OSPF 則採取 LS,C
+考慮硬碟排程，目前讀寫頭（read-write head）在磁柱（cylinder）4 的位置，電腦系統中僅有 4 個將被讀取的資料 A、B、C、D 分別位於磁柱 1、磁柱 5、磁柱 8、磁柱 9 的位置，若採用最短搜尋時間優先（shortest- seek-time-first）排程演算法，四筆資料被讀取出來的先後次序，由先至後的排序為何？,A、B、D、C,D、B、C、A,B、A、C、D,B、C、D、A,D
+在 Python 語言中，下列哪種資料型態的資料內容不可更改？,元組(tuple),字典(dictionary),串列(list),集合(set),A
+"某個 200 磁軌（編號 0..199）的磁碟中，其讀寫頭目前的位置在磁軌 100，且磁碟佇列（Disk Queue）中對於磁碟磁軌存取的要求順序如下：65, 87, 4, 106, 187, 31, 145。若分別以 FCFS（First-Come, First-Served）、 SSTF（Shortest Seek Time First）、SCAN 演算法（讀寫頭往磁軌 0 的方向移動）來進行磁碟排程，則所有三種方法會造成磁頭移動距離之總和為多少磁軌？",1116,1207,1171,963,C
+有關入侵偵測系統(IDS)之敘述，下列何者錯誤？,異常行為偵測有偵測出未知攻擊之機會,異常行為偵測不需先定義正常行為,錯誤行為偵測需先明確定義攻擊行為,錯誤行為偵測難以找出未知攻擊,B
+下列何種定址模式(Addressing Modes)無須記憶體的存取動作，運算元擷取速度最快？,立即定址,相對定址,間接定址,直接定址,A
+有關數位簽章使用公鑰、私鑰，下列敘述何者錯誤？,數位簽章是一連串的二進位數字，它的功能如傳統的『簽章』一般,他人不可利用發行者的公開鑰匙，來驗證發行者利用私有鑰匙所簽署的文件,使用私鑰加密（相當於生成簽名），公鑰解密（相當於驗證簽名）,具有確定傳送訊息內容的『完整性』與傳送端的『不可否認性』功能,B
+有關使用者介面 UI 和使用者體驗 UX 之敘述，下列何者錯誤？,UX 以使用者為中心，涵蓋範圍極廣,UX 設計的核心重點在於「強調使用者的體驗過程」而不是「功能需求的實現」,UI 設計師常透過與使用者訪談或定性定量研究方法，去檢視使用者的想法與感覺,UI 設計強調整體之人機交互、操作邏輯、介面美觀與否等問題,C
+若系統使用 8-bit ASCII 編碼每個字元（Character），且螢幕由 24 行（Lines）組成，每行有 80 個字元。要儲存整個螢幕的資料需要多少個位元組（Bytes）的記憶體？,15360,1920,13440,7680,B
+作業系統中需使用排程器（Scheduler），使得執行行程（Process）的切換更具效率，下列策略何者比較不適合？,最後到的工作先做,耗時最短的工作先做,最先到的工作先做,具高優先權的工作先做,A
+下列何者通常不屬於對軟體之壓力測試(stress testing)？,模擬超過正常上線人數數倍之使用者連線,讓使用者在吵雜環境中使用軟體,執行需使用大量記憶體之測試案例,執行需大量存取資料庫資料之測試案例,B
+管道式處理器（pipelined processor）在執行一道算術指令時，若該計算發生滿溢的狀況，最早可在那個階段被偵測？,寫回（write back）,執行（execute）,解碼（decode）,擷取（fetch）,B
+為對抗勒索病毒如 WannaCry 類型的攻擊，從防治與災後復原整體來評估，下列何種作為的效果最理想?,建置入侵防禦系統,裝防毒軟體,建置入侵偵測系統,文件資料備份到外接硬碟，備份週期盡可能短，外接硬碟在執行備份時才連接,D
+下列哪一個 IP 位址與 172.16.28.252 / 20 非屬同一個子網路中？,172.16.29.166,172.16.17.122,172.16.27.39,172.16.33.18,D
+有關自然語言處理之敘述，下列何者有誤？,自然語言處理需要將文字轉化成向量以進行後續處理及篩選,自然語言處理可以將英文文章翻譯成中文文章,自然語言處理中越來越多使用機器自動學習的方法來獲取語言知識,自然語言處理以單詞出現的次數來衡量單詞重要性,D
+下列何種影像格式可將顏色儲存為透明？,GIF,BMP,JPG,TIFF,A
+下列哪一種標準資料庫介面可讓我們在一般程式中透過指令直接存取資料庫資料？,ASP,ODBC,IDC,RD,B
+關聯式資料庫之“實體關聯圖”(ERD)可用 UML 作建構，請問此 ERD 歸屬於下列何種圖別？,物件圖(object diagram),循序圖(sequence diagram),活動圖(activity diagram),類別圖(class diagram),D
+下列何種 ISO 標準與資訊安全管理(ISMS)關係最密切？,ISO 27001,ISO 14000,ISO 20000,ISO 9000,A
+有關 OSI 模型(Open System Interconnection Model)中各層之敘述，下列何者有誤？,實體層：負責將資料轉成電子訊號後再傳送出去,應用層：負責規範各項網路服務的使用者介面,傳輸層：UDP 屬於傳輸層的協定,網路層：ARP 及 FTP 均屬於網路層的協定,D
+關於循序邏輯（Sequential logic）與組合邏輯（Combinational logic）的比較，下列何者正確？,組合邏輯內部包含有記憶元件,組合邏輯的輸出與輸入及目前狀態（present state）有關,組合邏輯具有回授路徑（feedback path）,漣波計數器（ripple counter）可歸類於循序邏輯,D
+關於網際網路通訊協定 IPv4 其 IP 位址長度有 4 Bytes，試問 IPv6 其 IP 位址長度是多少位元（Bits）？,32,48,64,128,D
+有關 BCD 編碼，下列何者有誤？,100110000111,110000000,10100101100,1110100,C
+DPI（dots per inch）是一常見之解析度單位，其意義為每一英吋（inch）中包含之像素點數目，該單位在滑鼠規格表上也很常見，現在假設一 17 英吋螢幕解析度設定為 1920*1080，且滑鼠之 DPI 為 300，若將游標由螢幕最左端移至最右端，實際上需將滑鼠移動多少英吋？,5.2,6.4,3.7,4.3,B
+"下列 Python 指令，將印出什麼結果？ x = ""50"" y = 3 z = x * y print(z, type(z))",505050 <class 'int'>,150 <class 'str'>,150 <class 'int'>,505050 <class 'str'>,D
+作業系統的組成有下列哪些？ A.核心 B.應用程式 C.作業環境 D.自動修復網路錯誤,僅 ACD,ABCD,僅 AC,僅 AD,C
+於 CMMI“能力成熟度模型整合”中，軟體品質認證之五項等級依序為何？,初級→可重複的→已定義的→最佳化→量化管理,初級→可重複的→已定義的→量化管理→最佳化,初級→已定義的→可重複的→量化管理→最佳化,初級→已定義的→可重複的→最佳化→量化管理,B
+某 Class C 網路以網路遮罩 255.255.255.248 切割成子網路，可切成幾個網路區段？,8,16,64,32,D
+為預防遭受勒索軟體(Ransomware)之攻擊，定期備份重要檔案並採用「3-2-1原則」備份方案是防護措施之一，有關「3-2-1原則」之敘述，下列何者正確？,3：每月至少進行 3 次備份,1：其中 1 份備份要存放異地,2：重要資料至少備份 2 份,3：以 3 種不同形式媒體儲存備份,B
+假設某一計算機中有 1 Giga Bytes 的記憶容量，每個字組有 32 位元，若其在記憶體中放置的位置是對齊的（Aligned），則定址字組需要幾個位元？若不需對齊，則又需要幾個位元？,30; 28,30; 30,28; 30,28; 28,C
+有關邏輯電路設計之敘述，下列何者錯誤？,計算機中之加法器為組合電路,欲解 2'' 個碼時，解碼器之輸入至少要 n 個以上才能達成,全加法器可以 2 個半加法器及 1 個 NAND 閘組合而成,計算機中之記憶體為序向電路,C
+每一項資料庫交易(transaction)皆須具備 ACID 特性，其中“A、I”之意義為何？,A 人因性、I 智慧性,A 原子性、I 智慧性,A 原子性、I 隔離性,A 人因性、I 隔離性,C
+有關記憶體容量的度量單位，下列何者最大？,MB（Mega Byte）,TB（Tera Byte）,GB（Giga Byte）,PB（Peta Byte）,D
+下列不同無號數進制表示法的運算式之計算結果，何者的值最大？,(73-38)10,(CD-AF)16,(76-34)8,(1000001-100000)2,A
+下列何種防火牆最適合企業用來掃描電子郵件的內容？,personal firewalls,Application-proxy gateway firewalls,Statful inspection firewalls,Packet filter firewalls,B
+有關對稱式加密與非對稱式加密之敘述，下列何者有誤？,DSA、IDEA 及 RSA 均為非對稱式加密算法,對稱式代表加密與解密均為相同密鑰，非對稱式則需公、私鑰各一把,對稱式使用上解密較快速，非對稱式使用上則較為安全,DES、3DES 及 AES 均為對稱式加密算法,A
+將八進制數值(2345.67)8轉換成十六進制數值，請問其結果為何？,(95.13)16,(45E.DC)16,(59.13)16,(4E5.DC)16,D
+佇列所使用的儲存策略（strategy）為何？,後進先出（LIFO）,先進先出（FIFO）,先進後出（FILO）,只進不出（JINO）,B
+有一張 800×600 像素的全彩影像，在不經過壓縮及不包含額外資訊的情況下，其資料量大小為：,480000 bytes,480000 bits,1440000 bits,1440000 bytes,D
+USB 3.2 Gen 2ൈ1 的傳輸速度最高每秒可達多少？,5 GB,40 GB,20 GB,10 GB,D
+在 Linux 作業系統中，如果在檔案的目錄中一個檔案的第一欄為「drwxr--r--」，則對這個檔案之敘述，下列何者錯誤？,這是一個目錄,這個檔案的擁用者只能讀、寫二種功能,其他的使用者只能讀,與擁用者相同群組的人只能讀,B
+下列有關分頁式（Paging）系統與分段式（Segmentation）系統記憶體管理策略的敘述，何者錯誤？,分頁式系統沒有外部碎裂（External Fragmentation）的問題,分頁式系統比較符合硬體的觀點，記憶體空間使用的效率較好,分段式系統會產生內部碎裂（Internal Fragmentation）的問題,分段式系統比較符合程式設計人員的觀點，有利於記憶體保護機制的實作,C
+有關匯流排(Bus)之敘述，下列何者有誤？,資料匯流排(Data Bus)與控制匯流排(Control Bus)的傳輸方向，同為雙向,資料匯流排(Data Bus)的排線數，決定每次能同時傳送資料的位元數,CPU 主要是靠匯流排傳輸資料、位址及控制訊號,位址匯流排(Address Bus)的排線數，決定可定址的最大記憶體空間,A
+關聯表之正規化格式包括 1NF、2NF、3NF，請問下列何者可移除“遞移相依性”？,3NF,2NF,1NF,都可移除,A
+作業系統可以採用死鎖避免（deadlock avoidance）來處理死鎖相關的議題，下列何者是死鎖避免的定義？,釋放死鎖占用的記憶體空間,定期偵測是否有死鎖，如果發現死鎖則進行回溯（roll back）的操作來消除死鎖,讓發生死鎖的必要條件至少有一項不成立,確保系統中有一個安全序列（safe sequence），可依序執行完所有程序（processes）,D
+關於電腦開機過程與作業系統（OS），下列敘述何者錯誤？,電腦開機過程中，須由 CPU 先執行啟動程式（Bootstrap），再載入 OS,OS 是硬體與使用者間的介面,OS 是硬體與應用程式間的介面,電腦開機過程中，須由 CPU 先載入 OS，再執行啟動程式（Bootstrap）,D
+假設二元樹（binary tree）中節點的深度（depth）定義如下： 1. 根節點（root）的深度為 0 2. 如果節點的深度是 i，則其子節點的深度是 i+1 二元樹的高度（height）定義為樹中所有節點的深度中之最大值完滿二元樹（full binary tree）中的節點則需滿足以下兩個條件： 1. 所有葉節點（leaf nodes）的深度相同 2. 非葉節點的分支度（degree）為 2 若完滿二元樹的高度為 15，則其具有的節點數量為何？,32767,65536,65535,32768,C
+使用「統一塑模語言(UML)」為工具的是下列哪一種系統分析與設計技術？,結構化系統分析與設計,元件導向分析與設計,瀑布模式,物件導向分析與設計,D
+下列那種方法可以防範傳送電子郵件的內容遭到竄改或偽造？,將郵件內容壓縮,使用數位簽章簽署郵件,插入商標圖片,使用網頁郵件帳號,B
+針對 C++程式語言中的純虛擬函式（pure virtual function），下列敍述何者錯誤？,不加以實作一個類別可以同時含有純虛擬函式與一般虛擬函式,一個類別若繼承含有純虛擬函式的類別，可以選擇實作繼承的純虛擬函式，也可以選擇保持純虛擬函式,一個類別（class）如果含有純虛擬函式，則該類別無法用來建立一個物件（object）,一個類別如果含有純虛擬函式，則該類別無法繼承其他類別,D
+"計算機中的記憶體可分為讀寫記憶體（Read Write Memory, RWM）與唯讀記憶體（Read Only Memory, ROM），常見的讀寫記憶體中又有動態隨機存取記憶體（Dynamic Random Access Memory, DRAM）與靜態隨機存取記憶體（Static Random Access Memory, SRAM）。在現實世界中，下列敘述何者正確？",計算機中的靜態隨機存取記憶體容量比動態隨機存取記憶體大,唯讀記憶體為揮發性的,計算機中的唯讀記憶體容量比讀寫記憶體小,"「基本輸入輸出系統」（Basic Input/Output System, BIOS）儲存在靜態隨機存取記憶體中",C
+磁碟陣列（RAID）可分成不同等級，對於各不同等級的磁碟陣列至少需要幾顆磁碟機才能運作的條件，下列敘述何者錯誤？,RAID 2 至少需要 2 顆,RAID 0 至少需要 2 顆,RAID 5 至少需要 3 顆,RAID 1+0 至少需要 4 顆,A
+在程式語言設計中，常會藉由一些條件判斷決定執行或停止某個程式區段(code segment)。下列何種迴圈(loop)結構會使其所涵蓋的程式區段至少會被執行一次？,if…then…else,while loop,do …while,for loop,C
+ASCII-8 可以表示多少個不同的字元（characters）？,64,32,256,128,C
+C++程式中，Ext 類別以 private 型態繼承了 Base 類別，則 Base 的 public 成員變成 Ext 的何種成員?,private,package,public,protected,A
+有關共享記憶體多處理器（shared memory multiprocessor）的敘述，下列何者錯誤？,提供單一實體記憶體位置空間（address space）給多處理器使用,"若不同處理器存取記憶體中的同一個字組（word），所花費的時間可能不同，則稱之為非一致的記憶體存取（nonuniform memory access, NUMA）",於多處理器上的所有程序（process）必須共享同一虛擬記憶體位置空間（address space）,"若任一處理器存取任一記憶體中的一個字組（word），所花費的時間皆相同，則稱之為一致的記憶體存取（uniform memory access, UMA）",C
+「精靈寶可夢 Go（Pokemon Go）」與下列何者關係最小？,GPS 定位,擴增實境,文書處理,直播,C
+有關網際網路通訊協定第 4 版(IPv4)和第 6 版(IPv6)之比較敘述，下列何者有誤？,IPv6 位址格式設有省略規則，IPv4 則無,IPv6 位址數量比 IPv4 多,IPv6 表頭長度可以變動，IPv4 則為固定,IPv6 表頭欄位比 IPv4 少,C
+超文件傳輸協定(HyperText Transfer Protocol，HTTP)是資訊網的應用層協定，下列何者為HTTP 的訊息？,查詢訊息,否定訊息,請求訊息,肯定訊息,C
+關於馮紐曼架構（Von Neumann Architecture）的敘述，下列何者錯誤？,需要被執行的指令，以二進位資料方式呈現，並儲存於記憶體子系統,記憶體子系統以及算術與邏輯單元子系統，亦常被組合在一起，並稱為中央處理器（Central Processing Unit）,控制單元子系統負責指令的解碼與執行,馮紐曼架構包含四個主要的子系統，分別為記憶體（Memory）子系統、輸入與輸出（Input/Output）子系統、算術與邏輯單元（Arithmetic/Logic Unit）子系統，以及控制單元（Control Unit）子系統,B
+下列何者不是 NIST(National Institute of Standards and Technology)定義的雲端運算部署模式？,Private Cloud,Community Cloud,Home Cloud,Hybrid Cloud,C
